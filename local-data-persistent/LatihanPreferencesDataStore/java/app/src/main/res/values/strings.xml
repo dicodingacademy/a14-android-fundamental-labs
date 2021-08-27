@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MyDataStore</string>
+    <string name="dark_mode">Dark Mode</string>
+</resources>
