@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MyWorkManager</string>
+    <string name="enter_city_name">Enter city name</string>
+    <string name="run_one_time_task">Run One Time Task</string>
+    <string name="run_periodic_task">Run Periodic Task</string>
+    <string name="cancel_periodic_task">Cancel Periodic Task</string>
+    <string name="status">Status :</string>
+</resources>
