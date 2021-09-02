@@ -9,9 +9,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
-import java.util.Collections;
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText editContent;
@@ -59,14 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * Method untuk menampilkan semua file yang ada
      */
     private void showList() {
-        ArrayList<String> arrayList = new ArrayList<>();
-
-        /*
-        Path dengan tipe data file digunakan untuk menampung data yang digunakan sebagai penyimpanan write dan read
-        Method getFilesDir() berfungsi untuk mendapatkan pengembalian file dari direktori yang ada di android.
-         */
-        Collections.addAll(arrayList, getFilesDir().list());
-        final CharSequence[] items = arrayList.toArray(new CharSequence[arrayList.size()]);
+        final CharSequence[] items = fileList();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Pilih file yang diinginkan");
         builder.setItems(items, (dialog, item) -> loadData(items[item].toString()));

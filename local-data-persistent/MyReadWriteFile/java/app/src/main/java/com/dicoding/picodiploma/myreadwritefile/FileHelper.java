@@ -4,11 +4,12 @@ import android.content.Context;
 import android.util.Log;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Created by dicoding on 11/23/2016.
@@ -22,15 +23,14 @@ class FileHelper {
      * Method yang digunakan untuk menuliskan data berupa string menjadi file
      *
      * @param fileModel get data file model
-     * @param context  context aplikasi
+     * @param context   context aplikasi
      */
     static void writeToFile(FileModel fileModel, Context context) {
-        try {
-            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput(fileModel.getFilename(), Context.MODE_PRIVATE));
-            outputStreamWriter.write(fileModel.getData());
-            outputStreamWriter.close();
+        try (FileOutputStream fos = context.openFileOutput(fileModel.getFilename(), Context.MODE_PRIVATE)) {
+            fos.write(fileModel.getData().getBytes());
         } catch (IOException e) {
-            Log.e(TAG, "File write failed :", e);
+            e.printStackTrace();
+            Log.e(TAG, "Writing file failed :", e);
         }
     }
 
@@ -42,32 +42,25 @@ class FileHelper {
      * @return data berupa string
      */
     static FileModel readFromFile(Context context, String filename) {
-
         FileModel fileModel = new FileModel();
-
         try {
-            InputStream inputStream = context.openFileInput(filename);
-
-            if (inputStream != null) {
-                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-                String receiveString;
-                StringBuilder stringBuilder = new StringBuilder();
-
-                while ((receiveString = bufferedReader.readLine()) != null) {
-                    stringBuilder.append(receiveString);
-                }
-
-                inputStream.close();
-                fileModel.setData(stringBuilder.toString());
-                fileModel.setFilename(filename);
+            FileInputStream fis = context.openFileInput(filename);
+            InputStreamReader inputStreamReader =
+                    new InputStreamReader(fis, StandardCharsets.UTF_8);
+            StringBuilder stringBuilder = new StringBuilder();
+            BufferedReader reader = new BufferedReader(inputStreamReader);
+            String line = reader.readLine();
+            while (line != null) {
+                stringBuilder.append(line).append('\n');
+                line = reader.readLine();
             }
+            fileModel.setFilename(filename);
+            fileModel.setData(stringBuilder.toString());
         } catch (FileNotFoundException e) {
             Log.e(TAG, "File not found :", e);
         } catch (IOException e) {
             Log.e(TAG, "Can not read file :", e);
         }
-
         return fileModel;
     }
 }

@@ -6,8 +6,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.dicoding.picodiploma.myreadwritefile.databinding.ActivityMainBinding
-import java.io.File
-import java.util.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -45,15 +43,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
      * Method untuk menampilkan semua file yang ada
      */
     private fun showList() {
-        val arrayList = ArrayList<String>()
-        /*
-        Path dengan tipe data file digunakan untuk menampung data yang digunakan sebagai penyimpanan write dan read
-        Method getFilesDir() berfungsi untuk mendapatkan pengembalian file dari direktori yang ada di android.
-        */
-        val path: File = filesDir
-        Collections.addAll(arrayList, *path.list() as Array<String>)
-        val items = arrayList.toTypedArray<CharSequence>()
-
+        val items = fileList()
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Pilih file yang diinginkan")
         builder.setItems(items) { _, item -> loadData(items[item].toString()) }
