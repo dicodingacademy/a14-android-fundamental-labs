@@ -1,10 +1,12 @@
 package com.dicoding.picodiploma.myrecyclerview;
 
+import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -48,15 +50,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showRecyclerList(){
-        rvHeroes.setLayoutManager(new LinearLayoutManager(this));
+        if(getApplicationContext().getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            rvHeroes.setLayoutManager(new GridLayoutManager(this, 2));
+        } else {
+            rvHeroes.setLayoutManager(new LinearLayoutManager(this));
+        }
+
         ListHeroAdapter listHeroAdapter = new ListHeroAdapter(list);
         rvHeroes.setAdapter(listHeroAdapter);
-        listHeroAdapter.setOnItemClickCallback(data -> showSelectedHero(data));
+        listHeroAdapter.setOnItemClickCallback(this::showSelectedHero);
 
-//        rvHeroes.setLayoutManager(new GridLayoutManager(this, 2));
-//        GridHeroAdapter gridHeroAdapter = new GridHeroAdapter(list);
-//        rvHeroes.setAdapter(gridHeroAdapter);
-//        gridHeroAdapter.setOnItemClickCallback(data -> showSelectedHero(data));
     }
 
     private void showSelectedHero(Hero hero) {
