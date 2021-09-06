@@ -4,10 +4,11 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.ArrayAdapter;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.bumptech.glide.Glide;
 import com.dicoding.restaurantreview.databinding.ActivityMainBinding;
@@ -41,12 +42,18 @@ public class MainActivity extends AppCompatActivity {
                     .into(activityMainBinding.ivPicture);
         });
 
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        activityMainBinding.rvReview.setLayoutManager(layoutManager);
+        DividerItemDecoration itemDecoration = new DividerItemDecoration(this, layoutManager.getOrientation());
+        activityMainBinding.rvReview.addItemDecoration(itemDecoration);
+
         mainViewModel.getListReview().observe(this, consumerReviews -> {
             ArrayList<String> listReview = new ArrayList<>();
             for (CustomerReviewsItem review : consumerReviews) {
                 listReview.add(review.getReview() + "\n- " + review.getName());
             }
-            activityMainBinding.lvReview.setAdapter(new ArrayAdapter<>(this, R.layout.item_review, listReview));
+            ReviewAdapter adapter = new ReviewAdapter(listReview);
+            activityMainBinding.rvReview.setAdapter(adapter);
             activityMainBinding.edReview.setText("");
         });
 
@@ -60,14 +67,14 @@ public class MainActivity extends AppCompatActivity {
 
         mainViewModel.snackbarText().observe(this, text -> {
 //            Snackbar.make(
-//                    findViewById(R.id.parent_layout),
+//                    getWindow().getDecorView().getRootView(),
 //                    text,
 //                    Snackbar.LENGTH_SHORT
 //            ).show();
             String snackBarText = text.getContentIfNotHandled();
             if (snackBarText != null) {
                 Snackbar.make(
-                        findViewById(R.id.parent_layout),
+                        getWindow().getDecorView().getRootView(),
                         snackBarText,
                         Snackbar.LENGTH_SHORT
                 ).show();

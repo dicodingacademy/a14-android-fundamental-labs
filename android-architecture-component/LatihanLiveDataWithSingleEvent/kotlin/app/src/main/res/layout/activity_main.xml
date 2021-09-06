@@ -103,8 +103,8 @@
         app:layout_constraintStart_toStartOf="@id/inputLayout"
         app:layout_constraintTop_toBottomOf="@id/inputLayout" />
 
-    <ListView
-        android:id="@+id/lvReview"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvReview"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
