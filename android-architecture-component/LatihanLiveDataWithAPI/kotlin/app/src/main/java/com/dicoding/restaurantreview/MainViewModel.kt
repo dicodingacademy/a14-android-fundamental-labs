@@ -26,7 +26,7 @@ class MainViewModel : ViewModel() {
         findRestaurant()
     }
 
-    fun findRestaurant() {
+    private fun findRestaurant() {
         _isLoading.value = true
         val client = ApiConfig.getApiService().getRestaurant(RESTAURANT_ID)
         client.enqueue(object : Callback<RestaurantResponse> {

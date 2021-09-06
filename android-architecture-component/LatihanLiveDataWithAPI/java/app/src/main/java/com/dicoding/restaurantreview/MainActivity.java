@@ -4,10 +4,11 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.ArrayAdapter;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.bumptech.glide.Glide;
 import com.dicoding.restaurantreview.databinding.ActivityMainBinding;
@@ -45,7 +46,12 @@ public class MainActivity extends AppCompatActivity {
             for (CustomerReviewsItem review : consumerReviews) {
                 listReview.add(review.getReview() + "\n- " + review.getName());
             }
-            activityMainBinding.lvReview.setAdapter(new ArrayAdapter<>(this, R.layout.item_review, listReview));
+            ReviewAdapter adapter = new ReviewAdapter(listReview);
+            activityMainBinding.rvReview.setAdapter(adapter);
+            LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+            activityMainBinding.rvReview.setLayoutManager(layoutManager);
+            DividerItemDecoration itemDecoration = new DividerItemDecoration(this, layoutManager.getOrientation());
+            activityMainBinding.rvReview.addItemDecoration(itemDecoration);
             activityMainBinding.edReview.setText("");
         });
 

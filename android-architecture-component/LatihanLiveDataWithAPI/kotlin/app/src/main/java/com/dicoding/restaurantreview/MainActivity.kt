@@ -4,9 +4,10 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.ArrayAdapter
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.dicoding.restaurantreview.databinding.ActivityMainBinding
 
@@ -34,9 +35,12 @@ class MainActivity : AppCompatActivity() {
             val listReview = consumerReviews.map {
                 "${it.review}\n- ${it.name}"
             }
-
-            activityMainBinding.lvReview.adapter =
-                ArrayAdapter(this, R.layout.item_review, listReview)
+            val adapter = ReviewAdapter(listReview)
+            activityMainBinding.rvReview.adapter = adapter
+            val layoutManager = LinearLayoutManager(this)
+            activityMainBinding.rvReview.layoutManager = layoutManager
+            val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
+            activityMainBinding.rvReview.addItemDecoration(itemDecoration)
             activityMainBinding.edReview.setText("")
         })
 
