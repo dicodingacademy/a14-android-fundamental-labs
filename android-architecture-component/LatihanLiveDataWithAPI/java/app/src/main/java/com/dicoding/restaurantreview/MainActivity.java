@@ -41,6 +41,11 @@ public class MainActivity extends AppCompatActivity {
                     .into(activityMainBinding.ivPicture);
         });
 
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        activityMainBinding.rvReview.setLayoutManager(layoutManager);
+        DividerItemDecoration itemDecoration = new DividerItemDecoration(this, layoutManager.getOrientation());
+        activityMainBinding.rvReview.addItemDecoration(itemDecoration);
+
         mainViewModel.getListReview().observe(this, consumerReviews -> {
             ArrayList<String> listReview = new ArrayList<>();
             for (CustomerReviewsItem review : consumerReviews) {
@@ -48,10 +53,6 @@ public class MainActivity extends AppCompatActivity {
             }
             ReviewAdapter adapter = new ReviewAdapter(listReview);
             activityMainBinding.rvReview.setAdapter(adapter);
-            LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-            activityMainBinding.rvReview.setLayoutManager(layoutManager);
-            DividerItemDecoration itemDecoration = new DividerItemDecoration(this, layoutManager.getOrientation());
-            activityMainBinding.rvReview.addItemDecoration(itemDecoration);
             activityMainBinding.edReview.setText("");
         });
 

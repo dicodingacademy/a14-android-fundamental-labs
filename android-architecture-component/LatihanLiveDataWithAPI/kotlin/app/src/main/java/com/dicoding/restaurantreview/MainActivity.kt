@@ -31,16 +31,17 @@ class MainActivity : AppCompatActivity() {
                 .into(activityMainBinding.ivPicture)
         })
 
+        val layoutManager = LinearLayoutManager(this)
+        activityMainBinding.rvReview.layoutManager = layoutManager
+        val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
+        activityMainBinding.rvReview.addItemDecoration(itemDecoration)
+
         mainViewModel.listReview.observe(this, { consumerReviews ->
             val listReview = consumerReviews.map {
                 "${it.review}\n- ${it.name}"
             }
             val adapter = ReviewAdapter(listReview)
             activityMainBinding.rvReview.adapter = adapter
-            val layoutManager = LinearLayoutManager(this)
-            activityMainBinding.rvReview.layoutManager = layoutManager
-            val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
-            activityMainBinding.rvReview.addItemDecoration(itemDecoration)
             activityMainBinding.edReview.setText("")
         })
 
