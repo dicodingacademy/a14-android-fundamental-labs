@@ -13,8 +13,8 @@ import java.util.concurrent.Executors;
 
 public class NoteRepository {
 
-    private NoteDao mNotesDao;
-    private ExecutorService executorService;
+    private final NoteDao mNotesDao;
+    private final ExecutorService executorService;
     public NoteRepository(Application application) {
         executorService = Executors.newSingleThreadExecutor();
 

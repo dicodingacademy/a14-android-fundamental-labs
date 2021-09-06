@@ -8,7 +8,7 @@ import com.dicoding.picodiploma.mynoteapps.repository.NoteRepository;
 
 public class NoteAddUpdateViewModel extends ViewModel {
 
-    private NoteRepository mNoteRepository;
+    private final NoteRepository mNoteRepository;
 
     public NoteAddUpdateViewModel(Application application) {
         mNoteRepository = new NoteRepository(application);

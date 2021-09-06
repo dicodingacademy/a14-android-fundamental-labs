@@ -1,9 +1,9 @@
 package com.dicoding.picodiploma.mynoteapps.ui.insert
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -17,19 +17,12 @@ class NoteAddUpdateActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_NOTE = "extra_note"
-        const val EXTRA_POSITION = "extra_position"
-        const val REQUEST_ADD = 100
-        const val RESULT_ADD = 101
-        const val REQUEST_UPDATE = 200
-        const val RESULT_UPDATE = 201
-        const val RESULT_DELETE = 301
         const val ALERT_DIALOG_CLOSE = 10
         const val ALERT_DIALOG_DELETE = 20
     }
 
     private var isEdit = false
     private var note: Note? = null
-    private var position = 0
     private lateinit var noteAddUpdateViewModel: NoteAddUpdateViewModel
 
     private var _activityNoteAddUpdateBinding: ActivityNoteAddUpdateBinding? = null
@@ -45,7 +38,6 @@ class NoteAddUpdateActivity : AppCompatActivity() {
 
         note = intent.getParcelableExtra(EXTRA_NOTE)
         if (note != null) {
-            position = intent.getIntExtra(EXTRA_POSITION, 0)
             isEdit = true
         } else {
             note = Note()
@@ -75,35 +67,36 @@ class NoteAddUpdateActivity : AppCompatActivity() {
         binding?.btnSubmit?.setOnClickListener {
             val title = binding?.edtTitle?.text.toString().trim()
             val description = binding?.edtDescription?.text.toString().trim()
-            if (title.isEmpty()) {
-                binding?.edtTitle?.error = getString(R.string.empty)
-            } else if (description.isEmpty()) {
-                binding?.edtDescription?.error = getString(R.string.empty)
-            } else {
-                note.let { note ->
-                    note?.title = title
-                    note?.description = description
+            when {
+                title.isEmpty() -> {
+                    binding?.edtTitle?.error = getString(R.string.empty)
                 }
-
-                val intent = Intent().apply {
-                    putExtra(EXTRA_NOTE, note)
-                    putExtra(EXTRA_POSITION, position)
+                description.isEmpty() -> {
+                    binding?.edtDescription?.error = getString(R.string.empty)
                 }
-
-                if (isEdit) {
-                    noteAddUpdateViewModel.update(note as Note)
-                    setResult(RESULT_UPDATE, intent)
-                    finish()
-                } else {
+                else -> {
                     note.let { note ->
-                        note?.date = DateHelper.getCurrentDate()
+                        note?.title = title
+                        note?.description = description
                     }
-                    noteAddUpdateViewModel.insert(note as Note)
-                    setResult(RESULT_ADD, intent)
+                    if (isEdit) {
+                        noteAddUpdateViewModel.update(note as Note)
+                        showToast(getString(R.string.changed))
+                    } else {
+                        note.let { note ->
+                            note?.date = DateHelper.getCurrentDate()
+                        }
+                        noteAddUpdateViewModel.insert(note as Note)
+                        showToast(getString(R.string.added))
+                    }
                     finish()
                 }
             }
         }
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -125,11 +118,6 @@ class NoteAddUpdateActivity : AppCompatActivity() {
         showAlertDialog(ALERT_DIALOG_CLOSE)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        _activityNoteAddUpdateBinding = null
-    }
-
     private fun showAlertDialog(type: Int) {
         val isDialogClose = type == ALERT_DIALOG_CLOSE
         val dialogTitle: String
@@ -149,18 +137,19 @@ class NoteAddUpdateActivity : AppCompatActivity() {
             setPositiveButton(getString(R.string.yes)) { _, _ ->
                 if (!isDialogClose) {
                     noteAddUpdateViewModel.delete(note as Note)
-
-                    val intent = Intent()
-                    intent.putExtra(EXTRA_POSITION, position)
-                    setResult(RESULT_DELETE, intent)
+                    showToast(getString(R.string.deleted))
                 }
-
                 finish()
             }
             setNegativeButton(getString(R.string.no)) { dialog, _ -> dialog.cancel() }
         }
         val alertDialog = alertDialogBuilder.create()
         alertDialog.show()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _activityNoteAddUpdateBinding = null
     }
 
     private fun obtainViewModel(activity: AppCompatActivity): NoteAddUpdateViewModel {

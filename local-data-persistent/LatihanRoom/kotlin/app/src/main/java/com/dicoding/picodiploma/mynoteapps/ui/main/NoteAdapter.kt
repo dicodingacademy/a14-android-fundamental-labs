@@ -1,6 +1,5 @@
 package com.dicoding.picodiploma.mynoteapps.ui.main
 
-import android.app.Activity
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -13,7 +12,7 @@ import com.dicoding.picodiploma.mynoteapps.ui.insert.NoteAddUpdateActivity
 import com.dicoding.picodiploma.mynoteapps.ui.main.NoteAdapter.NoteViewHolder
 import java.util.*
 
-class NoteAdapter(private val activity: Activity) : RecyclerView.Adapter<NoteViewHolder>() {
+class NoteAdapter : RecyclerView.Adapter<NoteViewHolder>() {
     private val listNotes = ArrayList<Note>()
     fun setListNotes(listNotes: List<Note>) {
         val diffCallback = NoteDiffCallback(this.listNotes, listNotes)
@@ -43,10 +42,9 @@ class NoteAdapter(private val activity: Activity) : RecyclerView.Adapter<NoteVie
                 tvItemDate.text = note.date
                 tvItemDescription.text = note.description
                 cvItemNote.setOnClickListener {
-                    val intent = Intent(activity, NoteAddUpdateActivity::class.java)
-                    intent.putExtra(NoteAddUpdateActivity.EXTRA_POSITION, adapterPosition)
+                    val intent = Intent(it.context, NoteAddUpdateActivity::class.java)
                     intent.putExtra(NoteAddUpdateActivity.EXTRA_NOTE, note)
-                    activity.startActivityForResult(intent, NoteAddUpdateActivity.REQUEST_UPDATE)
+                    it.context.startActivity(intent)
                 }
             }
         }

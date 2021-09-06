@@ -11,7 +11,7 @@ import java.util.List;
 
 public class MainViewModel extends ViewModel {
 
-    private NoteRepository mNoteRepository;
+    private final NoteRepository mNoteRepository;
 
     public MainViewModel(Application application) {
         mNoteRepository = new NoteRepository(application);

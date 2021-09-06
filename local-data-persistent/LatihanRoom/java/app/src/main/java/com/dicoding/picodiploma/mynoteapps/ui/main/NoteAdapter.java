@@ -1,6 +1,5 @@
 package com.dicoding.picodiploma.mynoteapps.ui.main;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -20,11 +19,6 @@ import java.util.List;
 
 public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder> {
     private final ArrayList<Note> listNotes = new ArrayList<>();
-    private final Activity activity;
-
-    NoteAdapter(Activity activity) {
-        this.activity = activity;
-    }
 
     void setListNotes(List<Note> listNotes) {
         final NoteDiffCallback diffCallback = new NoteDiffCallback(this.listNotes, listNotes);
@@ -52,25 +46,23 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
         return listNotes.size();
     }
 
-    class NoteViewHolder extends RecyclerView.ViewHolder {
+    static class NoteViewHolder extends RecyclerView.ViewHolder {
         final ItemNoteBinding binding;
 
         NoteViewHolder(ItemNoteBinding binding) {
             super(binding.getRoot());
-
             this.binding = binding;
         }
 
         public void bind(Note note) {
-            binding.tvItemTitle.setText(listNotes.get(getAdapterPosition()).getTitle());
-            binding.tvItemDate.setText(listNotes.get(getAdapterPosition()).getDate());
-            binding.tvItemDescription.setText(listNotes.get(getAdapterPosition()).getDescription());
+            binding.tvItemTitle.setText(note.getTitle());
+            binding.tvItemDate.setText(note.getDate());
+            binding.tvItemDescription.setText(note.getDescription());
 
             binding.cvItemNote.setOnClickListener(v -> {
                 Intent intent = new Intent(v.getContext(), NoteAddUpdateActivity.class);
-                intent.putExtra(NoteAddUpdateActivity.EXTRA_POSITION, getAdapterPosition());
                 intent.putExtra(NoteAddUpdateActivity.EXTRA_NOTE, note);
-                activity.startActivityForResult(intent, NoteAddUpdateActivity.REQUEST_UPDATE);
+                v.getContext().startActivity(intent);
             });
         }
     }
