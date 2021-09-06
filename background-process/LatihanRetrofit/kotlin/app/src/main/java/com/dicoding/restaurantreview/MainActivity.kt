@@ -2,56 +2,129 @@ package com.dicoding.restaurantreview
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.dicoding.restaurantreview.databinding.ActivityMainBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
-    private val mainViewModel: MainViewModel by viewModels()
+    private lateinit var binding: ActivityMainBinding
+
+    companion object {
+        private const val TAG = "MainActivity"
+        private const val RESTAURANT_ID = "uewq1zg2zlskfw1e867"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(activityMainBinding.root)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         supportActionBar?.hide()
 
-        mainViewModel.restaurant.observe(this, { restaurant ->
-            activityMainBinding.tvTitle.text = restaurant.name
-            activityMainBinding.tvDescription.text = restaurant.description
-            Glide.with(this)
-                .load("https://restaurant-api.dicoding.dev/images/large/${restaurant.pictureId}")
-                .into(activityMainBinding.ivPicture)
-        })
+        val layoutManager = LinearLayoutManager(this)
+        binding.rvReview.layoutManager = layoutManager
+        val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
+        binding.rvReview.addItemDecoration(itemDecoration)
 
-        mainViewModel.listReview.observe(this, { consumerReviews ->
-            val listReview = consumerReviews.map {
-                "${it.review}\n- ${it.name}"
-            }
-            val adapter = ReviewAdapter(listReview)
-            activityMainBinding.rvReview.adapter = adapter
-            val layoutManager = LinearLayoutManager(this)
-            activityMainBinding.rvReview.layoutManager = layoutManager
-            val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
-            activityMainBinding.rvReview.addItemDecoration(itemDecoration)
-            activityMainBinding.edReview.setText("")
-        })
+        findRestaurant()
 
-        mainViewModel.isLoading.observe(this, {
-            activityMainBinding.progressBar.visibility = if (it) View.VISIBLE else View.GONE
-        })
-
-        activityMainBinding.btnSend.setOnClickListener { view ->
-            mainViewModel.postReview(activityMainBinding.edReview.text.toString())
+        binding.btnSend.setOnClickListener { view ->
+            postReview(binding.edReview.text.toString())
             val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(view.windowToken, 0)
+        }
+    }
+
+    private fun findRestaurant() {
+        showLoading(true)
+        val client = ApiConfig.getApiService().getRestaurant(RESTAURANT_ID)
+        client.enqueue(object : Callback<RestaurantResponse> {
+            override fun onResponse(
+                call: Call<RestaurantResponse>,
+                response: Response<RestaurantResponse>
+            ) {
+                showLoading(false)
+                if (response.isSuccessful) {
+                    val responseBody = response.body()
+                    if (responseBody != null) {
+                        setRestaurantData(responseBody.restaurant)
+                        setReviewData(responseBody.restaurant.customerReviews)
+                    }
+                } else {
+                    Log.e(TAG, "onFailure: ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<RestaurantResponse>, t: Throwable) {
+                showLoading(false)
+                Log.e(TAG, "onFailure: ${t.message}")
+            }
+        })
+    }
+
+    private fun setRestaurantData(restaurant: Restaurant) {
+        binding.tvTitle.text = restaurant.name
+        binding.tvDescription.text = restaurant.description
+        Glide.with(this@MainActivity)
+            .load("https://restaurant-api.dicoding.dev/images/large/${restaurant.pictureId}")
+            .into(binding.ivPicture)
+    }
+
+    private fun postReview(review: String) {
+        showLoading(true)
+        val client = ApiConfig.getApiService().postReview(RESTAURANT_ID, "Dicoding", review)
+        client.enqueue(object : Callback<PostReviewResponse> {
+            override fun onResponse(
+                call: Call<PostReviewResponse>,
+                response: Response<PostReviewResponse>
+            ) {
+                showLoading(false)
+                val responseBody = response.body()
+                if (response.isSuccessful && responseBody != null) {
+                    setReviewData(responseBody.customerReviews)
+                } else {
+                    Log.e(TAG, "onFailure: ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<PostReviewResponse>, t: Throwable) {
+                showLoading(false)
+                Log.e(TAG, "onFailure: ${t.message}")
+            }
+        })
+    }
+
+    private fun setReviewData(consumerReviews: List<CustomerReviewsItem>) {
+        val listReview = ArrayList<String>()
+        for (review in consumerReviews) {
+            listReview.add(
+                """
+                ${review.review}
+                - ${review.name}
+                """.trimIndent()
+            )
+        }
+        val adapter = ReviewAdapter(listReview)
+        binding.rvReview.adapter = adapter
+        binding.edReview.setText("")
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.progressBar.visibility = View.VISIBLE
+        } else {
+            binding.progressBar.visibility = View.GONE
         }
     }
 }
