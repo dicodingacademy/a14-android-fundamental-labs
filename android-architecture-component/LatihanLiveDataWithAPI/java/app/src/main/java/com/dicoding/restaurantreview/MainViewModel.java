@@ -22,19 +22,16 @@ import retrofit2.Response;
 public class MainViewModel extends ViewModel {
 
     private final MutableLiveData<Restaurant> _restaurant = new MutableLiveData<>();
-
     public LiveData<Restaurant> getRestaurant() {
         return _restaurant;
     }
 
     private final MutableLiveData<List<CustomerReviewsItem>> _listReview = new MutableLiveData<>();
-
     public LiveData<List<CustomerReviewsItem>> getListReview() {
         return _listReview;
     }
 
     private final MutableLiveData<Boolean> _isLoading = new MutableLiveData<>();
-
     public LiveData<Boolean> isLoading() {
         return _isLoading;
     }

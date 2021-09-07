@@ -18,7 +18,6 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private MainViewModel mainViewModel;
     private ActivityMainBinding binding;
 
     @Override
@@ -32,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
             getSupportActionBar().hide();
         }
 
-        mainViewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(MainViewModel.class);
+        MainViewModel mainViewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(MainViewModel.class);
 
         mainViewModel.getRestaurant().observe(this, restaurant -> {
             setRestaurantData(restaurant);
