@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/menu_gallery" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/menu_slideshow" />
+        <item
+            android:id="@+id/nav_cart"
+            android:icon="@drawable/ic_shopping_cart"
+            android:title="@string/menu_cart" />
+    </group>
+
+    <item android:title="@string/menu_map">
+        <menu>
+            <item
+                android:id="@+id/nav_map"
+                android:icon="@drawable/ic_map"
+                android:title="@string/menu_map" />
+            <item
+                android:id="@+id/nav_hotel"
+                android:icon="@drawable/ic_hotel"
+                android:title="@string/menu_hotel" />
+            <item
+                android:id="@+id/nav_subway"
+                android:icon="@drawable/ic_subway"
+                android:title="@string/menu_subway" />
+        </menu>
+    </item>
+</menu>

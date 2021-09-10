@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">MyNavigation</string>
+    <string name="hello_home_fragment">Hello Ini Home Fragment</string>
+    <string name="to_profile">Ke Activity Profile Activity</string>
+    <string name="to_category">Ke fragment Category</string>
+    <string name="this_profile">Ini activity Profile</string>
+    <string name="this_category">Ini fragment Category</string>
+    <string name="category_lifestyle">Ke fragment Lifestyle</string>
+    <string name="category_sport">Ke fragment Sport</string>
+    <string name="category_name">Category Name</string>
+    <string name="category_description">Category Description</string>
+    <string name="to_home">Ke fragment Home</string>
+</resources>
