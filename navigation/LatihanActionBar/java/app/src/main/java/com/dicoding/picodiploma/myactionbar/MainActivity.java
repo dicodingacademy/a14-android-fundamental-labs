@@ -4,16 +4,13 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
-
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -58,24 +55,22 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu1:
-
-                /*
-                Ketika menu ditekan maka akan memunculkan fragment,
-                fragment di tambahkan ke dalam backstack sehingga ketika ditekan back akan kembali ke MainActivity
-                 */
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, new MenuFragment())
-                        .addToBackStack(null)
-                        .commit();
-                return true;
-            case R.id.menu2:
-                Intent i = new Intent(this, MenuActivity.class);
-                startActivity(i);
-                return true;
-            default:
-                return true;
+        if (item.getItemId() == R.id.menu1) {
+            /*
+            Ketika menu ditekan maka akan memunculkan fragment,
+            fragment di tambahkan ke dalam backstack sehingga ketika ditekan back akan kembali ke MainActivity
+            */
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, new MenuFragment())
+                    .addToBackStack(null)
+                    .commit();
+            return true;
+        } else if (item.getItemId() == R.id.menu2) {
+            Intent i = new Intent(this, MenuActivity.class);
+            startActivity(i);
+            return true;
+        } else {
+            return true;
         }
     }
 }
