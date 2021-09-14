@@ -2,6 +2,9 @@ package com.dicoding.picodiploma.mysharedpreference;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -16,8 +19,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private boolean isPreferenceEmpty = false;
     private UserModel userModel;
 
-    private final int REQUEST_CODE = 100;
-
+    final ActivityResultLauncher<Intent> resultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getData() != null && result.getResultCode() == FormUserPreferenceActivity.RESULT_CODE) {
+                    userModel = result.getData().getParcelableExtra(FormUserPreferenceActivity.EXTRA_RESULT);
+                    populateView(userModel);
+                    checkForm(userModel);
+                }
+            });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,22 +92,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent.putExtra(FormUserPreferenceActivity.EXTRA_TYPE_FORM, FormUserPreferenceActivity.TYPE_EDIT);
             }
             intent.putExtra("USER", userModel);
-            startActivityForResult(intent, REQUEST_CODE);
+            resultLauncher.launch(intent);
         }
     }
 
-    /*
-    Akan dipanggil ketika formuserpreferenceactivity ditutup
-     */
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_CODE) {
-            if (resultCode == FormUserPreferenceActivity.RESULT_CODE) {
-                userModel = data.getParcelableExtra(FormUserPreferenceActivity.EXTRA_RESULT);
-                populateView(userModel);
-                checkForm(userModel);
-            }
-        }
-    }
 }
