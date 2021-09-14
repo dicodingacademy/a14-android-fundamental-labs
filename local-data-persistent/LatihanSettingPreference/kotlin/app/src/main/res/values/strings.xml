@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">MySettingPreference</string>
+    <string name="nothing">Tidak Ada</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="age">Age</string>
+    <string name="phone_number">PhoneNumber</string>
+    <string name="is_love">Suka Manchester United</string>
+    <string name="key_email">email</string>
+    <string name="key_age">age</string>
+    <string name="key_phone">phone</string>
+    <string name="key_love">love</string>
+    <string name="key_name">name</string>
+</resources>
