@@ -7,6 +7,8 @@ import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.picodiploma.myquote.databinding.ActivityListQuotesBinding
 
 import com.loopj.android.http.AsyncHttpClient
@@ -32,6 +34,11 @@ class ListQuotesActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportActionBar?.title = "List of Quotes"
+
+        val layoutManager = LinearLayoutManager(this)
+        binding.listQuotes.setLayoutManager(layoutManager)
+        val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
+        binding.listQuotes.addItemDecoration(itemDecoration)
 
         getListQuotes()
     }
@@ -59,7 +66,7 @@ class ListQuotesActivity : AppCompatActivity() {
                         listQuote.add("\n$quote\n — $author\n")
                     }
 
-                    val adapter = ArrayAdapter(this@ListQuotesActivity, android.R.layout.simple_list_item_1, listQuote)
+                    val adapter = QuoteAdapter(listQuote)
                     binding.listQuotes.adapter = adapter
                 } catch (e: Exception) {
                     Toast.makeText(this@ListQuotesActivity, e.message, Toast.LENGTH_SHORT).show()

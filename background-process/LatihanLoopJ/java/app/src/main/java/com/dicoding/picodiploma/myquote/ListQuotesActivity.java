@@ -1,14 +1,15 @@
 package com.dicoding.picodiploma.myquote;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -24,7 +25,7 @@ public class ListQuotesActivity extends AppCompatActivity {
 
     private static final String TAG = ListQuotesActivity.class.getSimpleName();
 
-    private ListView listView;
+    private RecyclerView listQuotes;
     private ProgressBar progressBar;
 
     @Override
@@ -36,8 +37,13 @@ public class ListQuotesActivity extends AppCompatActivity {
             getSupportActionBar().setTitle("List of Quotes");
         }
 
-        listView = findViewById(R.id.listQuotes);
         progressBar = findViewById(R.id.progressBar);
+        listQuotes = findViewById(R.id.listQuotes);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        listQuotes.setLayoutManager(layoutManager);
+        DividerItemDecoration itemDecoration = new DividerItemDecoration(this, layoutManager.getOrientation());
+        listQuotes.addItemDecoration(itemDecoration);
 
         getListQuotes();
     }
@@ -66,8 +72,8 @@ public class ListQuotesActivity extends AppCompatActivity {
                         listQuote.add("\n"+quote +"\n — "+author+"\n");
                     }
 
-                    ArrayAdapter adapter = new ArrayAdapter<>(ListQuotesActivity.this, android.R.layout.simple_list_item_1, listQuote);
-                    listView.setAdapter(adapter);
+                    QuoteAdapter adapter = new QuoteAdapter(listQuote);
+                    listQuotes.setAdapter(adapter);
                 } catch (Exception e) {
                     Toast.makeText(ListQuotesActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
