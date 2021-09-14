@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MyAsyncTaskWithProgressBar</string>
+    <string name="progress">Progress</string>
+    <string name="start">start</string>
+</resources>

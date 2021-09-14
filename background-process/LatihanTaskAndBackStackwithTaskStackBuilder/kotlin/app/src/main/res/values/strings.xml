@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">MyDeepNavigation</string>
+    <string name="activity_home">Home</string>
+    <string name="activity_detail">Detail</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title">Title</string>
+    <string name="message">Message</string>
+    <string name="open_detail">Open Detail</string>
+    <string name="notification_title">Hi, how are you?</string>
+    <string name="notification_message">Do you have any plan this weekend? Let\'s hangout</string>
+    <string name="detail_title">Hola, Good News</string>
+    <string name="detail_message">Now you can learn android in Dicoding</string>
+</resources>
