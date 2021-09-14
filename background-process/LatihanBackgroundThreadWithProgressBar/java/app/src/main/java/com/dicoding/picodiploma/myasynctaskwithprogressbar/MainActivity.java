@@ -27,48 +27,45 @@ public class MainActivity extends AppCompatActivity implements MyAsyncCallback {
         progressBar = findViewById(R.id.progress_bar);
         buttonStart = findViewById(R.id.btn_start);
 
-        buttonStart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        buttonStart.setOnClickListener(v -> {
 
-                // Pengecekan apakah demoasync null?
-                if (demoAsync != null) {
+            // Pengecekan apakah demoasync null?
+            if (demoAsync != null) {
 
-                    // Ambil status dari async
-                    AsyncTask.Status status = demoAsync.getStatus();
+                // Ambil status dari async
+                AsyncTask.Status status = demoAsync.getStatus();
 
-                    /*
-                      Di sini dilakukan pengecekan status dari async
-                      1. PENDING, berarti asynctask belum berjalan
-                      2. RUNNING, berarti asynctask sedang berjalan
-                      3. FINISHED, berarti asynctask sudah selesai
-                     */
+                /*
+                  Di sini dilakukan pengecekan status dari async
+                  1. PENDING, berarti asynctask belum berjalan
+                  2. RUNNING, berarti asynctask sedang berjalan
+                  3. FINISHED, berarti asynctask sudah selesai
+                 */
 
-                    switch (status) {
-                        case PENDING:
-                            // Jika PENDING, maka langsung jalankan asynctask
-                            demoAsync.execute();
-                            break;
-                        case RUNNING:
-                            // Jika RUNNING, maka infokan untuk tunggu sampai selesai
-                            Toast.makeText(MainActivity.this, "Async masih berjalan, silakan tunggu sampai selesai..", Toast.LENGTH_SHORT).show();
-                            break;
-                        case FINISHED:
-                            // Jika FINISHED, maka buat asynctask baru kemudian jalankkan
-                            // Perlu diingat bahwa asynctask bersifat fire & forget,
-                            // Fire & forget membatasi execute asynctask yang kedua kalinya, oleh karena itu perlu objek baru
-                            demoAsync = new DemoAsync(MainActivity.this);
-                            demoAsync.execute();
-                            break;
-                    }
-                } else {
-
-                    // Buat async baru
-                    demoAsync = new DemoAsync(MainActivity.this);
-
-                    // Execute asynctask dengan parameter string 'Halo Ini Demo AsyncTask'
-                    demoAsync.execute();
+                switch (status) {
+                    case PENDING:
+                        // Jika PENDING, maka langsung jalankan asynctask
+                        demoAsync.execute();
+                        break;
+                    case RUNNING:
+                        // Jika RUNNING, maka infokan untuk tunggu sampai selesai
+                        Toast.makeText(MainActivity.this, "Async masih berjalan, silakan tunggu sampai selesai..", Toast.LENGTH_SHORT).show();
+                        break;
+                    case FINISHED:
+                        // Jika FINISHED, maka buat asynctask baru kemudian jalankkan
+                        // Perlu diingat bahwa asynctask bersifat fire & forget,
+                        // Fire & forget membatasi execute asynctask yang kedua kalinya, oleh karena itu perlu objek baru
+                        demoAsync = new DemoAsync(MainActivity.this);
+                        demoAsync.execute();
+                        break;
                 }
+            } else {
+
+                // Buat async baru
+                demoAsync = new DemoAsync(MainActivity.this);
+
+                // Execute asynctask dengan parameter string 'Halo Ini Demo AsyncTask'
+                demoAsync.execute();
             }
         });
     }
