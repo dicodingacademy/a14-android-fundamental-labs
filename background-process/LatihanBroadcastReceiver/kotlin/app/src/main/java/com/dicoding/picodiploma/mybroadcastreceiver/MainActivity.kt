@@ -59,6 +59,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == SMS_REQUEST_CODE) {
             when (PackageManager.PERMISSION_GRANTED) {
                 grantResults[0] -> Toast.makeText(this, "Sms receiver permission diterima", Toast.LENGTH_SHORT).show()
