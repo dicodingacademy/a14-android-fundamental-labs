@@ -41,7 +41,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             jika sudah tidak ada fragment di dalam backstack maka activity yang akan di close / finish
              */
             CategoryFragment mCategoryFragment = new CategoryFragment();
-            FragmentManager mFragmentManager = getChildFragmentManager();
+            FragmentManager mFragmentManager = getParentFragmentManager();
             mFragmentManager
                     .beginTransaction()
                     .replace(R.id.frame_container, mCategoryFragment, CategoryFragment.class.getSimpleName())

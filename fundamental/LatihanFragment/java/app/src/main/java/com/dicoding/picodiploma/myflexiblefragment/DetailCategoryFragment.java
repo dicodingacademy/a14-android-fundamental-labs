@@ -62,11 +62,6 @@ public class DetailCategoryFragment extends Fragment {
             FragmentManager mFragmentManager = getChildFragmentManager();
             mOptionDialogFragment.show(mFragmentManager, OptionDialogFragment.class.getSimpleName());
         });
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
 
         if (savedInstanceState != null) {
             String descFromBundle = savedInstanceState.getString(EXTRA_DESCRIPTION);
