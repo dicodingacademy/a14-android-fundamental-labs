@@ -45,10 +45,6 @@ class DetailCategoryFragment : Fragment() {
             val mFragmentManager = childFragmentManager
             mOptionDialogFragment.show(mFragmentManager, OptionDialogFragment::class.java.simpleName)
         }
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
 
         if (savedInstanceState != null) {
             val descFromBundle = savedInstanceState.getString(EXTRA_DESCRIPTION)
