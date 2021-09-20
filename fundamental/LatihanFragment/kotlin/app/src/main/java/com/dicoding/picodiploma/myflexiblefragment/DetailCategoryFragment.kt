@@ -43,7 +43,7 @@ class DetailCategoryFragment : Fragment() {
         btnShowDialog.setOnClickListener{
             val mOptionDialogFragment = OptionDialogFragment()
 
-            val mFragmentManager = childFragmentManager
+            val mFragmentManager = parentFragmentManager
             mOptionDialogFragment.show(mFragmentManager, OptionDialogFragment::class.java.simpleName)
         }
     }
