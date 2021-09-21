@@ -11,9 +11,9 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.switchmaterial.SwitchMaterial
 
-class MainActivity : AppCompatActivity() {
+private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
-    private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
