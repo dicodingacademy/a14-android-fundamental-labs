@@ -88,11 +88,10 @@ public class MainActivity extends AppCompatActivity implements LoadNotesCallback
         rvNotes.setLayoutManager(new LinearLayoutManager(this));
         rvNotes.setHasFixedSize(true);
 
-        Intent intent = new Intent(MainActivity.this, NoteAddUpdateActivity.class);
-
         adapter = new NoteAdapter(new NoteAdapter.OnItemClickCallback() {
             @Override
             public void onItemClicked(Note selectedNote, Integer position) {
+                Intent intent = new Intent(MainActivity.this, NoteAddUpdateActivity.class);
                 intent.putExtra(NoteAddUpdateActivity.EXTRA_NOTE, selectedNote);
                 intent.putExtra(NoteAddUpdateActivity.EXTRA_POSITION, position);
                 resultLauncher.launch(intent);
@@ -101,7 +100,10 @@ public class MainActivity extends AppCompatActivity implements LoadNotesCallback
         rvNotes.setAdapter(adapter);
 
         FloatingActionButton fabAdd = findViewById(R.id.fab_add);
-        fabAdd.setOnClickListener(view -> resultLauncher.launch(intent));
+        fabAdd.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, NoteAddUpdateActivity.class);
+            resultLauncher.launch(intent);
+        });
 
         if (savedInstanceState == null) {
             new LoadNotesAsync(this, this).execute();
