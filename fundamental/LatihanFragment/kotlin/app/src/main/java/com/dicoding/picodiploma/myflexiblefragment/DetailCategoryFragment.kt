@@ -37,7 +37,7 @@ class DetailCategoryFragment : Fragment() {
         btnShowDialog = view.findViewById(R.id.btn_show_dialog)
 
         btnProfile.setOnClickListener{
-            val mIntent = Intent(activity, ProfileActivity::class.java)
+            val mIntent = Intent(requireContext(), ProfileActivity::class.java)
             startActivity(mIntent)
         }
         btnShowDialog.setOnClickListener{
@@ -73,7 +73,7 @@ class DetailCategoryFragment : Fragment() {
     */
     internal var optionDialogListener: OptionDialogFragment.OnOptionDialogListener = object : OptionDialogFragment.OnOptionDialogListener {
         override fun onOptionChosen(text: String?) {
-            Toast.makeText(activity, text, Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireActivity(), text, Toast.LENGTH_SHORT).show()
         }
     }
 }
