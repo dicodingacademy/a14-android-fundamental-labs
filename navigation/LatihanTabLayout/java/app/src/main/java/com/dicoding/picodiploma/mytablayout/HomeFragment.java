@@ -12,26 +12,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class HomeFragment extends Fragment {
 
-    private static final String ARG_SECTION_NUMBER = "section_number";
-
-    public static HomeFragment newInstance(int index) {
-        HomeFragment fragment = new HomeFragment();
-        Bundle bundle = new Bundle();
-        bundle.putInt(ARG_SECTION_NUMBER, index);
-        fragment.setArguments(bundle);
-        return fragment;
-    }
+    public static final String ARG_SECTION_NUMBER = "section_number";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
@@ -41,7 +28,7 @@ public class HomeFragment extends Fragment {
 
         final TextView textView = view.findViewById(R.id.section_label);
 
-        int index = 1;
+        int index;
         if (getArguments() != null) {
             index = getArguments().getInt(ARG_SECTION_NUMBER);
             textView.setText(getString(R.string.content_tab_text, index));

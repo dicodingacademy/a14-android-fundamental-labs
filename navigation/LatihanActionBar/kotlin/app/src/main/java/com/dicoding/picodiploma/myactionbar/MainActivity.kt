@@ -4,6 +4,7 @@ import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -29,12 +30,14 @@ class MainActivity : AppCompatActivity() {
         val searchView = menu.findItem(R.id.search).actionView as SearchView
 
         searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
+        searchView.clearFocus()
         searchView.queryHint = resources.getString(R.string.search_hint)
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             /*
             Gunakan method ini ketika search selesai atau OK
              */
             override fun onQueryTextSubmit(query: String): Boolean {
+                Log.d("Query", "onQueryTextSubmit: "+ query)
                 Toast.makeText(this@MainActivity, query, Toast.LENGTH_SHORT).show()
                 return true
             }

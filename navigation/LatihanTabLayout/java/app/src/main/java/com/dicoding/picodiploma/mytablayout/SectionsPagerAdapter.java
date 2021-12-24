@@ -1,5 +1,7 @@
 package com.dicoding.picodiploma.mytablayout;
 
+import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -35,7 +37,11 @@ public class SectionsPagerAdapter extends FragmentStateAdapter {
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        return HomeFragment.newInstance(position + 1);
+        HomeFragment fragment = new HomeFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt(HomeFragment.ARG_SECTION_NUMBER, position+1);
+        fragment.setArguments(bundle);
+        return fragment;
     }
 
     @Override
