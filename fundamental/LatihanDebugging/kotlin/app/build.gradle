@@ -5,11 +5,11 @@ plugins {
     id 'kotlin-android-extensions'
 }
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
     defaultConfig {
         applicationId "com.dicoding.picodiploma.mytestingapp"
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -34,10 +34,9 @@ dependencies {
     androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'androidx.appcompat:appcompat:1.4.0'
     testImplementation 'junit:junit:4.13.2'
-    implementation "androidx.core:core-ktx:1.6.0"
-    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    implementation "androidx.core:core-ktx:1.7.0"
 }
 repositories {
     mavenCentral()
