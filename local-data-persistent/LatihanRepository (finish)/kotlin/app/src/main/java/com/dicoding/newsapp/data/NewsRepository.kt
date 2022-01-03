@@ -30,12 +30,13 @@ class NewsRepository private constructor(
                     val newsList = ArrayList<NewsEntity>()
                     appExecutors.diskIO.execute {
                         articles?.forEach { article ->
+                            val isBookmarked = newsDao.isNewsBookmarked(article.title)
                             val news = NewsEntity(
                                 article.title,
                                 article.publishedAt,
                                 article.urlToImage,
                                 article.url,
-                                false
+                                isBookmarked
                             )
                             newsList.add(news)
                         }
@@ -54,6 +55,17 @@ class NewsRepository private constructor(
             result.value = Result.Success(newData)
         }
         return result
+    }
+
+    fun getBookmarkedNews(): LiveData<List<NewsEntity>> {
+        return newsDao.getBookmarkedNews()
+    }
+
+    fun setBookmarkedNews(news: NewsEntity, bookmarkState: Boolean) {
+        appExecutors.diskIO.execute {
+            news.isBookmarked = bookmarkState
+            newsDao.updateNews(news)
+        }
     }
 
     companion object {

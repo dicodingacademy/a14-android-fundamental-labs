@@ -27,11 +27,17 @@ class NewsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         tabName = arguments?.getString(ARG_TAB)
 
-        val newsAdapter = NewsAdapter()
-
         val factory: ViewModelFactory = ViewModelFactory.getInstance(requireActivity())
         val viewModel: NewsViewModel by viewModels {
             factory
+        }
+
+        val newsAdapter = NewsAdapter { news ->
+            if (news.isBookmarked){
+                viewModel.deleteNews(news)
+            } else {
+                viewModel.saveNews(news)
+            }
         }
 
         if (tabName == TAB_NEWS) {
@@ -56,6 +62,11 @@ class NewsFragment : Fragment() {
                         }
                     }
                 }
+            })
+        } else if (tabName == TAB_BOOKMARK) {
+            viewModel.getBookmarkedNews().observe(viewLifecycleOwner, { bookmarkedNews ->
+                binding?.progressBar?.visibility = View.GONE
+                newsAdapter.submitList(bookmarkedNews)
             })
         }
 
