@@ -41,16 +41,6 @@ public class NewsAdapter extends ListAdapter<NewsEntity, NewsAdapter.MyViewHolde
         NewsEntity news = getItem(position);
         holder.bind(news);
 
-        ImageView ivBookmark = holder.binding.ivBookmark;
-        if (news.isBookmarked()) {
-            ivBookmark.setImageDrawable(ContextCompat.getDrawable(ivBookmark.getContext(), R.drawable.ic_bookmarked_white));
-        } else {
-            ivBookmark.setImageDrawable(ContextCompat.getDrawable(ivBookmark.getContext(), R.drawable.ic_bookmark_white));
-        }
-
-        ivBookmark.setOnClickListener(view -> {
-            onItemClickCallback.onBookmarkClick(news);
-        });
     }
 
     static class MyViewHolder extends RecyclerView.ViewHolder {
