@@ -14,7 +14,7 @@ public class DateFormatter {
     public static String formatDate(String currentDate) {
         String currentFormat = "yyyy-MM-dd'T'hh:mm:ss'Z'";
         String targetFormat = "dd MMM yyyy | HH:mm";
-        String timezone = "Asia/Jakarta";
+        String timezone = "GMT";
         DateFormat currentDf = new SimpleDateFormat(currentFormat, Locale.getDefault());
         currentDf.setTimeZone(TimeZone.getTimeZone(timezone));
         DateFormat targetDf = new SimpleDateFormat(targetFormat, Locale.getDefault());
