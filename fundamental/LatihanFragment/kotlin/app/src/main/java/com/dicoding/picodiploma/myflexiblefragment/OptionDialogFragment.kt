@@ -38,15 +38,12 @@ class OptionDialogFragment : DialogFragment() {
         btnChoose.setOnClickListener {
             val checkedRadioButtonId = rgOptions.checkedRadioButtonId
             if (checkedRadioButtonId != -1) {
-                var coach: String? = null
-                when (checkedRadioButtonId) {
-                    R.id.rb_saf -> coach = rbSaf.text.toString().trim()
-
-                    R.id.rb_mou -> coach = rbMou.text.toString().trim()
-
-                    R.id.rb_lvg -> coach = rbLvg.text.toString().trim()
-
-                    R.id.rb_moyes -> coach = rbMoyes.text.toString().trim()
+                val coach: String? = when (checkedRadioButtonId) {
+                    R.id.rb_saf -> rbSaf.text.toString().trim()
+                    R.id.rb_mou -> rbMou.text.toString().trim()
+                    R.id.rb_lvg -> rbLvg.text.toString().trim()
+                    R.id.rb_moyes -> rbMoyes.text.toString().trim()
+                    else -> null
                 }
                 optionDialogListener?.onOptionChosen(coach)
                 dialog?.dismiss()
