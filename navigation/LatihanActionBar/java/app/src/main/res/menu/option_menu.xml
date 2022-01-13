@@ -10,7 +10,7 @@
     <group android:menuCategory="container">
         <item android:id="@+id/menu1"
             android:title="@string/menu_1"
-            android:icon = "@drawable/ic_announcement_white_24px"
+            android:icon = "@drawable/ic_announcement_white_24"
             app:showAsAction="always" />
         <item
             android:id="@+id/menu2"
