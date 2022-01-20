@@ -19,8 +19,8 @@
     <string name="size">Size</string>
     <string name="battery">Battery</string>
     <string name="seller">Dijual oleh</string>
-    <string name="narenda_wicaksono">Narenda Wicaksono</string>
+    <string name="my_name">Narenda Wicaksono</string>
     <string name="buy">Beli</string>
-    <string name="_735">$735</string>
-    <string name="_6_photos">6 photos</string>
+    <string name="dummy_value">$735</string>
+    <string name="dummy_photos">6 photos</string>
 </resources>
