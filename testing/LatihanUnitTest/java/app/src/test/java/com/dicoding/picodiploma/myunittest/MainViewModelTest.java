@@ -44,7 +44,7 @@ public class MainViewModelTest {
     }
 
     @Test
-    public void tesSurfaceArea() {
+    public void testSurfaceArea() {
         cuboidModel = new CuboidModel();
         mainViewModel = new MainViewModel(cuboidModel);
         mainViewModel.save(dummyWidth, dummyLength, dummyHeight);
