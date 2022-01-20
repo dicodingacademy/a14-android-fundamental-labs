@@ -149,4 +149,143 @@ fundamental/LatihanFragment/java/.idea/modules.xml
 fundamental/LatihanFragment/java/.idea/vcs.xml
 android-architecture-component/LatihanAndroidKTX/LatihanFlexibleFragment/.idea/modules.xml
 android-architecture-component/LatihanAndroidKTX/LatihanFlexibleFragment/.idea/gradle.xml
-*.xml
+fundamental/LatihanDebugging/java/.idea/compiler.xml
+fundamental/LatihanDebugging/java/.idea/gradle.xml
+fundamental/LatihanDebugging/java/.idea/jarRepositories.xml
+fundamental/LatihanDebugging/java/.idea/misc.xml
+fundamental/LatihanDebugging/java/.idea/vcs.xml
+fundamental/LatihanDebugging/kotlin/.idea/compiler.xml
+fundamental/LatihanDebugging/kotlin/.idea/gradle.xml
+fundamental/LatihanDebugging/kotlin/.idea/jarRepositories.xml
+fundamental/LatihanDebugging/kotlin/.idea/misc.xml
+fundamental/LatihanDebugging/kotlin/.idea/vcs.xml
+fundamental/LatihanFragment/kotlin/.idea/deploymentTargetDropDown.xml
+layout/LatihanConstraintLayout/kotlin/.idea/vcs.xml
+layout/LatihanConstraintLayout/kotlin/.idea/modules.xml
+layout/LatihanConstraintLayout/kotlin/.idea/misc.xml
+layout/LatihanConstraintLayout/kotlin/.idea/jarRepositories.xml
+layout/LatihanConstraintLayout/kotlin/.idea/gradle.xml
+layout/LatihanConstraintLayout/kotlin/.idea/compiler.xml
+layout/LatihanCustomView/java/.idea/compiler.xml
+layout/LatihanCustomView/java/.idea/gradle.xml
+layout/LatihanCustomView/java/.idea/jarRepositories.xml
+layout/LatihanCustomView/java/.idea/misc.xml
+layout/LatihanCustomView/java/.idea/vcs.xml
+layout/LatihanCustomView/kotlin/.idea/compiler.xml
+layout/LatihanCustomView/kotlin/.idea/gradle.xml
+layout/LatihanCustomView/kotlin/.idea/jarRepositories.xml
+layout/LatihanCustomView/kotlin/.idea/misc.xml
+layout/LatihanCustomView/kotlin/.idea/vcs.xml
+layout/LatihanLibrary/java/.idea/compiler.xml
+layout/LatihanLibrary/java/.idea/gradle.xml
+layout/LatihanLibrary/java/.idea/jarRepositories.xml
+layout/LatihanLibrary/java/.idea/misc.xml
+layout/LatihanLibrary/java/.idea/modules.xml
+layout/LatihanLibrary/java/.idea/vcs.xml
+layout/LatihanLibrary/kotlin/.idea/compiler.xml
+layout/LatihanLibrary/kotlin/.idea/gradle.xml
+layout/LatihanLibrary/kotlin/.idea/jarRepositories.xml
+layout/LatihanLibrary/kotlin/.idea/misc.xml
+layout/LatihanLibrary/kotlin/.idea/modules.xml
+layout/LatihanLibrary/kotlin/.idea/vcs.xml
+layout/LatihanRecyclerView/java/.idea/compiler.xml
+layout/LatihanRecyclerView/java/.idea/gradle.xml
+layout/LatihanRecyclerView/java/.idea/jarRepositories.xml
+layout/LatihanRecyclerView/java/.idea/misc.xml
+layout/LatihanRecyclerView/java/.idea/modules.xml
+layout/LatihanRecyclerView/java/.idea/vcs.xml
+layout/LatihanRecyclerView/kotlin/.idea/compiler.xml
+layout/LatihanRecyclerView/kotlin/.idea/gradle.xml
+layout/LatihanRecyclerView/kotlin/.idea/jarRepositories.xml
+layout/LatihanRecyclerView/kotlin/.idea/misc.xml
+layout/LatihanRecyclerView/kotlin/.idea/modules.xml
+layout/LatihanRecyclerView/kotlin/.idea/vcs.xml
+local-data-persistent/LatihanRepository (starter)/java/.idea/compiler.xml
+local-data-persistent/LatihanRepository (starter)/java/.idea/gradle.xml
+local-data-persistent/LatihanRepository (starter)/java/.idea/jarRepositories.xml
+local-data-persistent/LatihanRepository (starter)/java/.idea/misc.xml
+local-data-persistent/LatihanRepository (starter)/java/.idea/modules.xml
+local-data-persistent/LatihanRepository (starter)/java/.idea/vcs.xml
+local-data-persistent/LatihanRepository (starter)/kotlin/.idea/compiler.xml
+local-data-persistent/LatihanRepository (starter)/kotlin/.idea/gradle.xml
+local-data-persistent/LatihanRepository (starter)/kotlin/.idea/jarRepositories.xml
+local-data-persistent/LatihanRepository (starter)/kotlin/.idea/misc.xml
+local-data-persistent/LatihanRepository (starter)/kotlin/.idea/modules.xml
+local-data-persistent/LatihanRepository (starter)/kotlin/.idea/vcs.xml
+local-data-persistent/LatihanSettingPreference/kotlin/.idea/compiler.xml
+local-data-persistent/LatihanSettingPreference/kotlin/.idea/gradle.xml
+local-data-persistent/LatihanSettingPreference/kotlin/.idea/jarRepositories.xml
+local-data-persistent/LatihanSettingPreference/kotlin/.idea/misc.xml
+local-data-persistent/LatihanSettingPreference/kotlin/.idea/vcs.xml
+local-data-persistent/LatihanSQLite/java/.idea/compiler.xml
+local-data-persistent/LatihanSQLite/java/.idea/gradle.xml
+local-data-persistent/LatihanSQLite/java/.idea/jarRepositories.xml
+local-data-persistent/LatihanSQLite/java/.idea/misc.xml
+local-data-persistent/LatihanSQLite/java/.idea/modules.xml
+local-data-persistent/LatihanSQLite/java/.idea/vcs.xml
+local-data-persistent/LatihanSQLite/kotlin/.idea/compiler.xml
+local-data-persistent/LatihanSQLite/kotlin/.idea/deploymentTargetDropDown.xml
+local-data-persistent/LatihanSQLite/kotlin/.idea/gradle.xml
+local-data-persistent/LatihanSQLite/kotlin/.idea/jarRepositories.xml
+local-data-persistent/LatihanSQLite/kotlin/.idea/misc.xml
+local-data-persistent/LatihanSQLite/kotlin/.idea/modules.xml
+local-data-persistent/LatihanSQLite/kotlin/.idea/vcs.xml
+navigation/LatihanActionBar/java/.idea/compiler.xml
+navigation/LatihanActionBar/java/.idea/gradle.xml
+navigation/LatihanActionBar/java/.idea/jarRepositories.xml
+navigation/LatihanActionBar/java/.idea/misc.xml
+navigation/LatihanActionBar/java/.idea/modules.xml
+navigation/LatihanActionBar/java/.idea/vcs.xml
+scheduler/LatihanBroadcastReceiver/kotlin/.idea/assetWizardSettings.xml
+scheduler/LatihanBroadcastReceiver/kotlin/.idea/compiler.xml
+scheduler/LatihanBroadcastReceiver/kotlin/.idea/gradle.xml
+scheduler/LatihanBroadcastReceiver/kotlin/.idea/jarRepositories.xml
+scheduler/LatihanBroadcastReceiver/kotlin/.idea/misc.xml
+scheduler/LatihanBroadcastReceiver/kotlin/.idea/modules.xml
+scheduler/LatihanBroadcastReceiver/kotlin/.idea/vcs.xml
+scheduler/LatihanNotification/java/.idea/compiler.xml
+scheduler/LatihanNotification/java/.idea/gradle.xml
+scheduler/LatihanNotification/java/.idea/jarRepositories.xml
+scheduler/LatihanNotification/java/.idea/misc.xml
+scheduler/LatihanNotification/java/.idea/vcs.xml
+scheduler/LatihanNotification/kotlin/.idea/compiler.xml
+scheduler/LatihanNotification/kotlin/.idea/deploymentTargetDropDown.xml
+scheduler/LatihanNotification/kotlin/.idea/gradle.xml
+scheduler/LatihanNotification/kotlin/.idea/jarRepositories.xml
+scheduler/LatihanNotification/kotlin/.idea/misc.xml
+scheduler/LatihanNotification/kotlin/.idea/vcs.xml
+scheduler/LatihanService/kotlin/.idea/compiler.xml
+scheduler/LatihanService/kotlin/.idea/deploymentTargetDropDown.xml
+scheduler/LatihanService/kotlin/.idea/gradle.xml
+scheduler/LatihanService/kotlin/.idea/jarRepositories.xml
+scheduler/LatihanService/kotlin/.idea/misc.xml
+scheduler/LatihanService/kotlin/.idea/modules.xml
+scheduler/LatihanService/kotlin/.idea/vcs.xml
+scheduler/LatihanWorkManager/java/.idea/compiler.xml
+scheduler/LatihanWorkManager/java/.idea/gradle.xml
+scheduler/LatihanWorkManager/java/.idea/jarRepositories.xml
+scheduler/LatihanWorkManager/java/.idea/misc.xml
+scheduler/LatihanWorkManager/java/.idea/vcs.xml
+scheduler/LatihanWorkManager/kotlin/.idea/compiler.xml
+scheduler/LatihanWorkManager/kotlin/.idea/gradle.xml
+scheduler/LatihanWorkManager/kotlin/.idea/jarRepositories.xml
+scheduler/LatihanWorkManager/kotlin/.idea/misc.xml
+scheduler/LatihanWorkManager/kotlin/.idea/vcs.xml
+navigation/LatihanTabLayout/kotlin/.idea/vcs.xml
+navigation/LatihanTabLayout/kotlin/.idea/misc.xml
+navigation/LatihanTabLayout/kotlin/.idea/jarRepositories.xml
+navigation/LatihanTabLayout/kotlin/.idea/gradle.xml
+navigation/LatihanTabLayout/kotlin/.idea/compiler.xml
+navigation/LatihanTabLayout/java/.idea/vcs.xml
+navigation/LatihanTabLayout/java/.idea/misc.xml
+navigation/LatihanTabLayout/java/.idea/jarRepositories.xml
+navigation/LatihanTabLayout/java/.idea/gradle.xml
+navigation/LatihanTabLayout/java/.idea/compiler.xml
+navigation/LatihanActionBar/kotlin/.idea/vcs.xml
+navigation/LatihanActionBar/kotlin/.idea/modules.xml
+navigation/LatihanActionBar/kotlin/.idea/misc.xml
+navigation/LatihanActionBar/kotlin/.idea/jarRepositories.xml
+navigation/LatihanActionBar/kotlin/.idea/gradle.xml
+navigation/LatihanActionBar/kotlin/.idea/deploymentTargetDropDown.xml
+navigation/LatihanActionBar/kotlin/.idea/compiler.xml
+local-data-persistent/LatihanRepository (coroutines)/.idea/workspace.xml
