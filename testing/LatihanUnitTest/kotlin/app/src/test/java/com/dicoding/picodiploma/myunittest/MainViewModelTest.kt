@@ -46,7 +46,7 @@ class MainViewModelTest {
     }
 
     @Test
-    fun tesSurfaceArea() {
+    fun testSurfaceArea() {
         cuboidModel = CuboidModel()
         mainViewModel = MainViewModel(cuboidModel)
         mainViewModel.save(dummyWidth, dummyLength, dummyHeight)
