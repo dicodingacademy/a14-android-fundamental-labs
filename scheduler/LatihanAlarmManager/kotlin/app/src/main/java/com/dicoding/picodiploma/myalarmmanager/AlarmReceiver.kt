@@ -38,8 +38,10 @@ class AlarmReceiver : BroadcastReceiver() {
         val type = intent.getStringExtra(EXTRA_TYPE)
         val message = intent.getStringExtra(EXTRA_MESSAGE)
 
-        val title = if (type.equals(TYPE_ONE_TIME, ignoreCase = true)) TYPE_ONE_TIME else TYPE_REPEATING
-        val notifId = if (type.equals(TYPE_ONE_TIME, ignoreCase = true)) ID_ONETIME else ID_REPEATING
+        val title =
+            if (type.equals(TYPE_ONE_TIME, ignoreCase = true)) TYPE_ONE_TIME else TYPE_REPEATING
+        val notifId =
+            if (type.equals(TYPE_ONE_TIME, ignoreCase = true)) ID_ONETIME else ID_REPEATING
 
         //Jika Anda ingin menampilkan dengan toast anda bisa menghilangkan komentar pada baris dibawah ini.
 //        showToast(context, title, message)
@@ -56,20 +58,26 @@ class AlarmReceiver : BroadcastReceiver() {
     }
 
     // Gunakan metode ini untuk menampilkan notifikasi
-    private fun showAlarmNotification(context: Context, title: String, message: String, notifId: Int) {
+    private fun showAlarmNotification(
+        context: Context,
+        title: String,
+        message: String,
+        notifId: Int
+    ) {
 
         val channelId = "Channel_1"
         val channelName = "AlarmManager channel"
 
-        val notificationManagerCompat = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val notificationManagerCompat =
+            context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
         val builder = NotificationCompat.Builder(context, channelId)
-                .setSmallIcon(R.drawable.ic_access_time_black)
-                .setContentTitle(title)
-                .setContentText(message)
-                .setColor(ContextCompat.getColor(context, android.R.color.transparent))
-                .setVibrate(longArrayOf(1000, 1000, 1000, 1000, 1000))
-                .setSound(alarmSound)
+            .setSmallIcon(R.drawable.ic_access_time_black)
+            .setContentTitle(title)
+            .setContentText(message)
+            .setColor(ContextCompat.getColor(context, android.R.color.transparent))
+            .setVibrate(longArrayOf(1000, 1000, 1000, 1000, 1000))
+            .setSound(alarmSound)
 
         /*
         Untuk android Oreo ke atas perlu menambahkan notification channel
@@ -78,9 +86,11 @@ class AlarmReceiver : BroadcastReceiver() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
             /* Create or update. */
-            val channel = NotificationChannel(channelId,
-                    channelName,
-                    NotificationManager.IMPORTANCE_DEFAULT)
+            val channel = NotificationChannel(
+                channelId,
+                channelName,
+                NotificationManager.IMPORTANCE_DEFAULT
+            )
 
             channel.enableVibration(true)
             channel.vibrationPattern = longArrayOf(1000, 1000, 1000, 1000, 1000)
@@ -98,7 +108,13 @@ class AlarmReceiver : BroadcastReceiver() {
 
     // Metode ini digunakan untuk menjalankan alarm one time
 
-    fun setOneTimeAlarm(context: Context, type: String, date: String, time: String, message: String) {
+    fun setOneTimeAlarm(
+        context: Context,
+        type: String,
+        date: String,
+        time: String,
+        message: String
+    ) {
 
         // Validasi inputan date dan time terlebih dahulu
         if (isDateInvalid(date, DATE_FORMAT) || isDateInvalid(time, TIME_FORMAT)) return
@@ -120,7 +136,12 @@ class AlarmReceiver : BroadcastReceiver() {
         calendar.set(Calendar.MINUTE, Integer.parseInt(timeArray[1]))
         calendar.set(Calendar.SECOND, 0)
 
-        val pendingIntent = PendingIntent.getBroadcast(context, ID_ONETIME, intent, 0)
+        val pendingIntent = PendingIntent.getBroadcast(
+            context,
+            ID_ONETIME,
+            intent,
+            PendingIntent.FLAG_IMMUTABLE
+        )
         alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pendingIntent)
 
         Toast.makeText(context, "One time alarm set up", Toast.LENGTH_SHORT).show()
@@ -144,8 +165,18 @@ class AlarmReceiver : BroadcastReceiver() {
         calendar.set(Calendar.MINUTE, Integer.parseInt(timeArray[1]))
         calendar.set(Calendar.SECOND, 0)
 
-        val pendingIntent = PendingIntent.getBroadcast(context, ID_REPEATING, intent, 0)
-        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, AlarmManager.INTERVAL_DAY, pendingIntent)
+        val pendingIntent = PendingIntent.getBroadcast(
+            context,
+            ID_REPEATING,
+            intent,
+            PendingIntent.FLAG_IMMUTABLE
+        )
+        alarmManager.setInexactRepeating(
+            AlarmManager.RTC_WAKEUP,
+            calendar.timeInMillis,
+            AlarmManager.INTERVAL_DAY,
+            pendingIntent
+        )
 
         Toast.makeText(context, "Repeating alarm set up", Toast.LENGTH_SHORT).show()
     }
@@ -154,8 +185,14 @@ class AlarmReceiver : BroadcastReceiver() {
     fun cancelAlarm(context: Context, type: String) {
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(context, AlarmReceiver::class.java)
-        val requestCode = if (type.equals(TYPE_ONE_TIME, ignoreCase = true)) ID_ONETIME else ID_REPEATING
-        val pendingIntent = PendingIntent.getBroadcast(context, requestCode, intent, 0)
+        val requestCode =
+            if (type.equals(TYPE_ONE_TIME, ignoreCase = true)) ID_ONETIME else ID_REPEATING
+        val pendingIntent = PendingIntent.getBroadcast(
+            context,
+            requestCode,
+            intent,
+            PendingIntent.FLAG_IMMUTABLE
+        )
         pendingIntent.cancel()
 
         alarmManager.cancel(pendingIntent)
@@ -167,9 +204,15 @@ class AlarmReceiver : BroadcastReceiver() {
     // Gunakan metode ini untuk mengecek apakah alarm tersebut sudah terdaftar di alarm manager
     fun isAlarmSet(context: Context, type: String): Boolean {
         val intent = Intent(context, AlarmReceiver::class.java)
-        val requestCode = if (type.equals(TYPE_ONE_TIME, ignoreCase = true)) ID_ONETIME else ID_REPEATING
+        val requestCode =
+            if (type.equals(TYPE_ONE_TIME, ignoreCase = true)) ID_ONETIME else ID_REPEATING
 
-        return PendingIntent.getBroadcast(context, requestCode, intent, PendingIntent.FLAG_NO_CREATE) != null
+        return PendingIntent.getBroadcast(
+            context,
+            requestCode,
+            intent,
+            PendingIntent.FLAG_IMMUTABLE
+        ) != null
     }
 
     // Metode ini digunakan untuk validasi date dan time
