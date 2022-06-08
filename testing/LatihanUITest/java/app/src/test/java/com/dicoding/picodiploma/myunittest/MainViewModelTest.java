@@ -13,7 +13,7 @@ public class MainViewModelTest {
     private MainViewModel mainViewModel;
     private CuboidModel cuboidModel;
     private final double dummyVolume = 504.0;
-    private final double dummyCircumference = 2016.0;
+    private final double dummyCircumference = 100.0;
     private final double dummySurfaceArea = 396.0;
     private final double dummyLength = 12.0;
     private final double dummyWidth = 7.0;
