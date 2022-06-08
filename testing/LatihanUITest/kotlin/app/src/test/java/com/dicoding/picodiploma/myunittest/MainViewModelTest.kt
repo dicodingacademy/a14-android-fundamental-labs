@@ -39,8 +39,8 @@ class MainViewModelTest {
         cuboidModel = CuboidModel()
         mainViewModel = MainViewModel(cuboidModel)
         mainViewModel.save(dummyWidth, dummyLength, dummyHeight)
-        val volume = mainViewModel.circumference
-        assertEquals(dummyCircumference, volume, 0.0001)
+        val circumference = mainViewModel.circumference
+        assertEquals(dummyCircumference, circumference, 0.0001)
     }
 
     @Test
@@ -48,8 +48,8 @@ class MainViewModelTest {
         cuboidModel = CuboidModel()
         mainViewModel = MainViewModel(cuboidModel)
         mainViewModel.save(dummyWidth, dummyLength, dummyHeight)
-        val volume = mainViewModel.surfaceArea
-        assertEquals(dummySurfaceArea, volume, 0.0001)
+        val surfaceArea = mainViewModel.surfaceArea
+        assertEquals(dummySurfaceArea, surfaceArea, 0.0001)
     }
 
     @Test
@@ -63,16 +63,16 @@ class MainViewModelTest {
     @Test
     fun testMockCircumference() {
         `when`(mainViewModel.circumference).thenReturn(dummyCircumference)
-        val volume = mainViewModel.circumference
+        val circumference = mainViewModel.circumference
         verify(cuboidModel).circumference
-        assertEquals(dummyCircumference, volume, 0.0001)
+        assertEquals(dummyCircumference, circumference, 0.0001)
     }
 
     @Test
     fun testMockSurfaceArea() {
         `when`(mainViewModel.surfaceArea).thenReturn(dummySurfaceArea)
-        val volume = mainViewModel.surfaceArea
+        val surfaceArea = mainViewModel.surfaceArea
         verify(cuboidModel).surfaceArea
-        assertEquals(dummySurfaceArea, volume, 0.0001)
+        assertEquals(dummySurfaceArea, surfaceArea, 0.0001)
     }
 }
