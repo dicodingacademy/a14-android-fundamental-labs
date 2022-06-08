@@ -41,8 +41,8 @@ class MainViewModelTest {
         cuboidModel = CuboidModel()
         mainViewModel = MainViewModel(cuboidModel)
         mainViewModel.save(dummyWidth, dummyLength, dummyHeight)
-        val volume = mainViewModel.getCircumference()
-        assertEquals(dummyCircumference, volume, 0.0001)
+        val circumference = mainViewModel.getCircumference()
+        assertEquals(dummyCircumference, circumference, 0.0001)
     }
 
     @Test
@@ -50,8 +50,8 @@ class MainViewModelTest {
         cuboidModel = CuboidModel()
         mainViewModel = MainViewModel(cuboidModel)
         mainViewModel.save(dummyWidth, dummyLength, dummyHeight)
-        val volume = mainViewModel.getSurfaceArea()
-        assertEquals(dummySurfaceArea, volume, 0.0001)
+        val surfaceArea = mainViewModel.getSurfaceArea()
+        assertEquals(dummySurfaceArea, surfaceArea, 0.0001)
     }
 
     @Test
