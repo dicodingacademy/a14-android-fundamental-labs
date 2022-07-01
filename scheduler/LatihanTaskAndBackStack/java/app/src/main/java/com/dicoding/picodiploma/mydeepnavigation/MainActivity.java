@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         PendingIntent pendingIntent = TaskStackBuilder.create(this)
                 .addParentStack(DetailActivity.class)
                 .addNextIntent(notifDetailIntent)
-                .getPendingIntent(110, PendingIntent.FLAG_UPDATE_CURRENT || PendingIntent.FLAG_IMMUTABLE);
+                .getPendingIntent(110, PendingIntent.FLAG_IMMUTABLE);
 
         NotificationManager notificationManagerCompat = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
