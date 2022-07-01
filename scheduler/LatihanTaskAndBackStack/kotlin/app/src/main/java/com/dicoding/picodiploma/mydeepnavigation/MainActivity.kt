@@ -62,10 +62,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         notifDetailIntent.putExtra(DetailActivity.EXTRA_TITLE, title)
         notifDetailIntent.putExtra(DetailActivity.EXTRA_MESSAGE, message)
 
-        val pendingIntent = TaskStackBuilder.create(this)
-                .addParentStack(DetailActivity::class.java)
-                .addNextIntent(notifDetailIntent)
-                .getPendingIntent(110, PendingIntent.FLAG_UPDATE_CURRENT)
+        val pendingIntent = TaskStackBuilder.create(this).run{
+            addParentStack(DetailActivity::class.java)
+            addNextIntent(notifDetailIntent)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                getPendingIntent(110, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+            } else {
+                getPendingIntent(110, PendingIntent.FLAG_UPDATE_CURRENT)
+            }
+        }
 
         val notificationManagerCompat = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
