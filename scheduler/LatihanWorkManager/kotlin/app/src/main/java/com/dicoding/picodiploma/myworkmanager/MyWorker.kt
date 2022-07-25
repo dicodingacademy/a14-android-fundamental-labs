@@ -39,7 +39,7 @@ class MyWorker(context: Context, workerParams: WorkerParameters) : Worker(contex
         Log.d(TAG, "getCurrentWeather: Mulai.....")
         Looper.prepare()
         val client = SyncHttpClient()
-        val url = "http://api.openweathermap.org/data/2.5/weather?q=$city&appid=$APP_ID"
+        val url = "https://api.openweathermap.org/data/2.5/weather?q=$city&appid=$APP_ID"
         Log.d(TAG, "getCurrentWeather: $url")
         client.post(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Array<Header?>?, responseBody: ByteArray) {

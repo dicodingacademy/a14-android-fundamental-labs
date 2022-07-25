@@ -45,7 +45,7 @@ public class MyWorker extends Worker {
         Log.d(TAG, "getCurrentWeather: Mulai.....");
         Looper.prepare();
         SyncHttpClient client = new SyncHttpClient();
-        String url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APP_ID;
+        String url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APP_ID;
         Log.d(TAG, "getCurrentWeather: " + url);
         client.post(url, new AsyncHttpResponseHandler() {
             @Override
