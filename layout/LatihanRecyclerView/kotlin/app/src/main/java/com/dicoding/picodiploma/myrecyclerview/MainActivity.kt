@@ -33,9 +33,10 @@ class MainActivity : AppCompatActivity() {
             val dataPhoto = resources.obtainTypedArray(R.array.data_photo)
             val listHero = ArrayList<Hero>()
             for (i in dataName.indices) {
-                val hero = Hero(dataName[i],dataDescription[i], dataPhoto.getResourceId(i, -1))
+                val hero = Hero(dataName[i], dataDescription[i], dataPhoto.getResourceId(i, -1))
                 listHero.add(hero)
             }
+            dataPhoto.recycle()
             return listHero
         }
 

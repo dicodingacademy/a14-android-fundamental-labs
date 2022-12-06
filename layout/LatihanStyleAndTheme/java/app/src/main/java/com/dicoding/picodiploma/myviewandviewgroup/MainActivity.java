@@ -1,7 +1,9 @@
-package com.dicoding.picodiploma.myviewandviews;
+package com.dicoding.picodiploma.myviewandviewgroup;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.dicoding.picodiploma.myviewandviews.R;
 
 public class MainActivity extends AppCompatActivity {
 

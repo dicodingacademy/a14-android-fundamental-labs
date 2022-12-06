@@ -2,16 +2,15 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'kotlin-android-extensions'
 }
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 33
     buildToolsVersion "30.0.3"
     defaultConfig {
-        applicationId "com.dicoding.picodiploma.myviewandviews"
+        applicationId "com.dicoding.picodiploma.myviewandviewgroup"
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -29,18 +28,13 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    namespace 'com.dicoding.picodiploma.myviewandviewgroup'
 }
 
 dependencies {
-    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    implementation 'androidx.appcompat:appcompat:1.3.1'
-    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.vectordrawable:vectordrawable-animated:1.1.0'
     testImplementation 'junit:junit:4.13.2'
-    implementation "androidx.core:core-ktx:1.6.0"
-}
-repositories {
-    mavenCentral()
+    implementation "androidx.core:core-ktx:1.9.0"
 }

@@ -49,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
         return listHero;
     }
 
-    private void showRecyclerList(){
-        if(getApplicationContext().getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+    private void showRecyclerList() {
+        if (getApplicationContext().getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             rvHeroes.setLayoutManager(new GridLayoutManager(this, 2));
         } else {
             rvHeroes.setLayoutManager(new LinearLayoutManager(this));

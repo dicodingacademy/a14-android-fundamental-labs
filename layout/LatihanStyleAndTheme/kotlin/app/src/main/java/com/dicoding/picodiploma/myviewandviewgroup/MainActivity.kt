@@ -1,4 +1,4 @@
-package com.dicoding.picodiploma.myviewandviews
+package com.dicoding.picodiploma.myviewandviewgroup
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
