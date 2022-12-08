@@ -5,12 +5,14 @@
         android:id="@+id/search"
         android:icon="@drawable/ic_search_white_24px"
         android:title="@string/search"
-        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:actionViewClass="android.widget.SearchView"
         app:showAsAction="collapseActionView|ifRoom" />
+
     <group android:menuCategory="container">
-        <item android:id="@+id/menu1"
+        <item
+            android:id="@+id/menu1"
+            android:icon="@drawable/ic_announcement_white_24"
             android:title="@string/menu_1"
-            android:icon = "@drawable/ic_announcement_white_24"
             app:showAsAction="ifRoom" />
         <item
             android:id="@+id/menu2"
