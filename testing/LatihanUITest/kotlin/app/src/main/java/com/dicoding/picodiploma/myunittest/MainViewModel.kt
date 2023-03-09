@@ -2,14 +2,11 @@ package com.dicoding.picodiploma.myunittest
 
 internal class MainViewModel(private val cuboidModel: CuboidModel) {
 
-    val circumference: Double
-        get() = cuboidModel.circumference
+    fun getCircumference() = cuboidModel.getCircumference()
 
-    val surfaceArea: Double
-        get() = cuboidModel.surfaceArea
+    fun getSurfaceArea() = cuboidModel.getSurfaceArea()
 
-    val volume: Double
-        get() = cuboidModel.volume
+    fun getVolume() = cuboidModel.getVolume()
 
     fun save(l: Double, w: Double, h: Double) {
         cuboidModel.save(l, w, h)
