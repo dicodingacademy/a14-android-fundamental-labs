@@ -25,14 +25,14 @@ class CategoryFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(v: View) {
         if (v.id == R.id.btn_detail_category) {
-            val mDetailCategoryFragment = DetailCategoryFragment()
+            val detailCategoryFragment = DetailCategoryFragment()
 
-            val mBundle = Bundle()
-            mBundle.putString(DetailCategoryFragment.EXTRA_NAME, "Lifestyle")
+            val bundle = Bundle()
+            bundle.putString(DetailCategoryFragment.EXTRA_NAME, "Lifestyle")
             val description = "Kategori ini akan berisi produk-produk lifestyle"
 
-            mDetailCategoryFragment.arguments = mBundle
-            mDetailCategoryFragment.description = description
+            detailCategoryFragment.arguments = bundle
+            detailCategoryFragment.description = description
 
             /*
             Method addToBackStack akan menambahkan fragment ke backstack
@@ -40,9 +40,9 @@ class CategoryFragment : Fragment(), View.OnClickListener {
             jika ada fragment di dalam backstack maka fragment yang akan di close / remove
             jika sudah tidak ada fragment di dalam backstack maka activity yang akan di close / finish
              */
-            val mFragmentManager = parentFragmentManager
-            mFragmentManager.beginTransaction().apply {
-                replace(R.id.frame_container, mDetailCategoryFragment, DetailCategoryFragment::class.java.simpleName)
+            val fragmentManager = parentFragmentManager
+            fragmentManager.beginTransaction().apply {
+                replace(R.id.frame_container, detailCategoryFragment, DetailCategoryFragment::class.java.simpleName)
                 addToBackStack(null)
                 commit()
             }

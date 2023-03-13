@@ -37,14 +37,14 @@ class DetailCategoryFragment : Fragment() {
         btnShowDialog = view.findViewById(R.id.btn_show_dialog)
 
         btnProfile.setOnClickListener{
-            val mIntent = Intent(requireContext(), ProfileActivity::class.java)
-            startActivity(mIntent)
+            val intent = Intent(requireContext(), ProfileActivity::class.java)
+            startActivity(intent)
         }
         btnShowDialog.setOnClickListener{
-            val mOptionDialogFragment = OptionDialogFragment()
+            val optionDialogFragment = OptionDialogFragment()
 
-            val mFragmentManager = parentFragmentManager
-            mOptionDialogFragment.show(mFragmentManager, OptionDialogFragment::class.java.simpleName)
+            val fragmentManager = parentFragmentManager
+            optionDialogFragment.show(fragmentManager, OptionDialogFragment::class.java.simpleName)
         }
 
         if (savedInstanceState != null) {

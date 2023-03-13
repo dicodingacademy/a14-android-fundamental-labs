@@ -32,10 +32,10 @@ class HomeFragment : Fragment(), View.OnClickListener {
             jika ada fragment di dalam backstack maka fragment yang akan di close / remove
             jika sudah tidak ada fragment di dalam backstack maka activity yang akan di close / finish
              */
-            val mCategoryFragment = CategoryFragment()
-            val mFragmentManager = parentFragmentManager
-            mFragmentManager.beginTransaction().apply {
-                replace(R.id.frame_container, mCategoryFragment, CategoryFragment::class.java.simpleName)
+            val categoryFragment = CategoryFragment()
+            val fragmentManager = parentFragmentManager
+            fragmentManager.beginTransaction().apply {
+                replace(R.id.frame_container, categoryFragment, CategoryFragment::class.java.simpleName)
                 addToBackStack(null)
                 commit()
             }
