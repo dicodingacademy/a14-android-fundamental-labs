@@ -43,7 +43,7 @@ class DetailCategoryFragment : Fragment() {
         btnShowDialog.setOnClickListener{
             val optionDialogFragment = OptionDialogFragment()
 
-            val fragmentManager = parentFragmentManager
+            val fragmentManager = childFragmentManager
             optionDialogFragment.show(fragmentManager, OptionDialogFragment::class.java.simpleName)
         }
 
@@ -71,7 +71,7 @@ class DetailCategoryFragment : Fragment() {
     /*
     Kode yang akan dijalankan ketika option dialog dipilih ok
     */
-    internal var optionDialogListener: OptionDialogFragment.OnOptionDialogListener = object : OptionDialogFragment.OnOptionDialogListener {
+    internal var optionDialogListener = object : OptionDialogFragment.OnOptionDialogListener {
         override fun onOptionChosen(text: String?) {
             Toast.makeText(requireActivity(), text, Toast.LENGTH_SHORT).show()
         }
