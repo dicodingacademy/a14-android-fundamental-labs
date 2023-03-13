@@ -23,7 +23,7 @@ import com.dicoding.picodiploma.mylivedata.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var mLiveDataTimerViewModel: MainViewModel
+    private lateinit var liveDataTimerViewModel: MainViewModel
     private lateinit var activityMainBinding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(activityMainBinding.root)
 
-        mLiveDataTimerViewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        liveDataTimerViewModel = ViewModelProvider(this)[MainViewModel::class.java]
         subscribe()
     }
 
@@ -41,6 +41,6 @@ class MainActivity : AppCompatActivity() {
             val newText = this@MainActivity.resources.getString(R.string.seconds, aLong)
             activityMainBinding.timerTextview.text = newText
         }
-        mLiveDataTimerViewModel.getElapsedTime().observe(this, elapsedTimeObserver)
+        liveDataTimerViewModel.getElapsedTime().observe(this, elapsedTimeObserver)
     }
 }
