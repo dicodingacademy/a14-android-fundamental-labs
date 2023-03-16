@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         registerReceiver(downloadReceiver, downloadIntentFilter)
     }
 
-    var requestPermissionLauncher = registerForActivityResult(
+    private var requestPermissionLauncher = registerForActivityResult(
         RequestPermission()
     ) { isGranted: Boolean ->
         if (isGranted) {
