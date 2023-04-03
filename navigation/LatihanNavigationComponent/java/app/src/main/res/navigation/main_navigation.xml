@@ -9,9 +9,6 @@
         android:name="com.dicoding.picodiploma.mynavigation.ProfileActivity"
         android:label="activity_profile"
         tools:layout="@layout/activity_profile">
-        <deepLink
-            android:id="@+id/deepLink"
-            app:uri="https://www.dicoding.com/profile" />
     </activity>
     <fragment
         android:id="@+id/categoryFragment"
