@@ -39,10 +39,8 @@ public class MainActivity extends AppCompatActivity {
         binding.rvNotes.setAdapter(adapter);
 
         binding.fabAdd.setOnClickListener(view -> {
-            if (view.getId() == R.id.fab_add) {
-                Intent intent = new Intent(MainActivity.this, NoteAddUpdateActivity.class);
-                startActivity(intent);
-            }
+            Intent intent = new Intent(MainActivity.this, NoteAddUpdateActivity.class);
+            startActivity(intent);
         });
     }
 

@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dicoding.picodiploma.mynoteapps.R
 import com.dicoding.picodiploma.mynoteapps.databinding.ActivityMainBinding
 import com.dicoding.picodiploma.mynoteapps.helper.ViewModelFactory
 import com.dicoding.picodiploma.mynoteapps.ui.insert.NoteAddUpdateActivity
@@ -24,11 +23,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding?.root)
 
         val mainViewModel = obtainViewModel(this@MainActivity)
-        mainViewModel.getAllNotes().observe(this, { noteList ->
+        mainViewModel.getAllNotes().observe(this) { noteList ->
             if (noteList != null) {
                 adapter.setListNotes(noteList)
             }
-        })
+        }
 
         adapter = NoteAdapter()
 
@@ -36,11 +35,9 @@ class MainActivity : AppCompatActivity() {
         binding?.rvNotes?.setHasFixedSize(true)
         binding?.rvNotes?.adapter = adapter
 
-        binding?.fabAdd?.setOnClickListener { view ->
-            if (view.id == R.id.fab_add) {
-                val intent = Intent(this@MainActivity, NoteAddUpdateActivity::class.java)
-                startActivity(intent)
-            }
+        binding?.fabAdd?.setOnClickListener {
+            val intent = Intent(this@MainActivity, NoteAddUpdateActivity::class.java)
+            startActivity(intent)
         }
     }
 
