@@ -60,13 +60,13 @@ class NewsAdapter(private val onBookmarkClick: (NewsEntity) -> Unit) : ListAdapt
     companion object {
         val DIFF_CALLBACK: DiffUtil.ItemCallback<NewsEntity> =
             object : DiffUtil.ItemCallback<NewsEntity>() {
-                override fun areItemsTheSame(oldUser: NewsEntity, newUser: NewsEntity): Boolean {
-                    return oldUser.title == newUser.title
+                override fun areItemsTheSame(oldItem: NewsEntity, newItem: NewsEntity): Boolean {
+                    return oldItem.title == newItem.title
                 }
 
                 @SuppressLint("DiffUtilEquals")
-                override fun areContentsTheSame(oldUser: NewsEntity, newUser: NewsEntity): Boolean {
-                    return oldUser == newUser
+                override fun areContentsTheSame(oldItem: NewsEntity, newItem: NewsEntity): Boolean {
+                    return oldItem == newItem
                 }
             }
     }
