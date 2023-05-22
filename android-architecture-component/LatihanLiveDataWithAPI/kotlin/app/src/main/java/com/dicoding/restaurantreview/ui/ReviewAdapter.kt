@@ -3,12 +3,9 @@ package com.dicoding.restaurantreview.ui
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import android.view.LayoutInflater
-import android.view.View
-import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.dicoding.restaurantreview.CustomerReviewsItem
-import com.dicoding.restaurantreview.R
+import com.dicoding.restaurantreview.data.remote.response.CustomerReviewsItem
 import com.dicoding.restaurantreview.databinding.ItemReviewBinding
 
 class ReviewAdapter : ListAdapter<CustomerReviewsItem, ReviewAdapter.MyViewHolder>(DIFF_CALLBACK) {
@@ -23,7 +20,7 @@ class ReviewAdapter : ListAdapter<CustomerReviewsItem, ReviewAdapter.MyViewHolde
         holder.bind(review)
     }
 
-    class MyViewHolder(val binding: ItemReviewBinding) : RecyclerView.ViewHolder(binding.root) {
+    class MyViewHolder(private val binding: ItemReviewBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(review: CustomerReviewsItem){
             binding.tvItem.text = "${review.review}\n- ${review.name}"
         }
@@ -31,17 +28,11 @@ class ReviewAdapter : ListAdapter<CustomerReviewsItem, ReviewAdapter.MyViewHolde
 
     companion object {
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<CustomerReviewsItem>() {
-            override fun areItemsTheSame(
-                oldItem: CustomerReviewsItem,
-                newItem: CustomerReviewsItem
-            ): Boolean {
+            override fun areItemsTheSame(oldItem: CustomerReviewsItem, newItem: CustomerReviewsItem): Boolean {
                 return oldItem == newItem
             }
 
-            override fun areContentsTheSame(
-                oldItem: CustomerReviewsItem,
-                newItem: CustomerReviewsItem
-            ): Boolean {
+            override fun areContentsTheSame(oldItem: CustomerReviewsItem, newItem: CustomerReviewsItem): Boolean {
                 return oldItem == newItem
             }
         }
