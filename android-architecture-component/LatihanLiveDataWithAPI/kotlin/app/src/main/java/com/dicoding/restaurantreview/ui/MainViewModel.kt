@@ -1,7 +1,12 @@
-package com.dicoding.restaurantreview
+package com.dicoding.restaurantreview.ui
 
 import android.util.Log
 import androidx.lifecycle.*
+import com.dicoding.restaurantreview.CustomerReviewsItem
+import com.dicoding.restaurantreview.PostReviewResponse
+import com.dicoding.restaurantreview.Restaurant
+import com.dicoding.restaurantreview.RestaurantResponse
+import com.dicoding.restaurantreview.data.remote.retrofit.ApiConfig
 import retrofit2.Callback
 import retrofit2.Call
 import retrofit2.Response

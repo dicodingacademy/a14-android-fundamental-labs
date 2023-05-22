@@ -1,4 +1,4 @@
-package com.dicoding.restaurantreview
+package com.dicoding.restaurantreview.ui
 
 import android.content.Context
 import android.os.Bundle
@@ -9,6 +9,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.dicoding.restaurantreview.CustomerReviewsItem
+import com.dicoding.restaurantreview.Restaurant
 import com.dicoding.restaurantreview.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -23,7 +25,8 @@ class MainActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
 
-        val mainViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(MainViewModel::class.java)
+        val mainViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
+            MainViewModel::class.java)
 
         mainViewModel.restaurant.observe(this, { restaurant ->
             setRestaurantData(restaurant)
@@ -58,10 +61,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setReviewData(consumerReviews: List<CustomerReviewsItem>) {
-        val listReview = consumerReviews.map {
-            "${it.review}\n- ${it.name}"
-        }
-        val adapter = ReviewAdapter(listReview)
+        val adapter = ReviewAdapter()
+        adapter.submitList(consumerReviews)
         binding.rvReview.adapter = adapter
         binding.edReview.setText("")
     }

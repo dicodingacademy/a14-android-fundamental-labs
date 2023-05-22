@@ -1,5 +1,7 @@
-package com.dicoding.restaurantreview
+package com.dicoding.restaurantreview.data.remote.retrofit
 
+import com.dicoding.restaurantreview.PostReviewResponse
+import com.dicoding.restaurantreview.RestaurantResponse
 import retrofit2.Call
 import retrofit2.http.*
 
