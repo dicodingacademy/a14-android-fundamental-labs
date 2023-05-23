@@ -1,9 +1,8 @@
 <resources>
     <string name="app_name">MyAppBar</string>
 
-    <string name="search_hint">Masukkan kata</string>
+    <string name="searchbar_hint">Masukkan kata</string>
     <string name="this_activity">Ini adalah menu activity</string>
-    <string name="search">Search</string>
     <string name="menu_1">Menu 1</string>
     <string name="menu_2">Menu 2</string>
     <string name="large_text">

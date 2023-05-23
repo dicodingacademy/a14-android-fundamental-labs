@@ -1,11 +1,10 @@
 package com.dicoding.picodiploma.myappbar
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.dicoding.picodiploma.myappbar.databinding.FragmentMenuBinding
+import androidx.fragment.app.Fragment
 
 
 class MenuFragment : Fragment() {
