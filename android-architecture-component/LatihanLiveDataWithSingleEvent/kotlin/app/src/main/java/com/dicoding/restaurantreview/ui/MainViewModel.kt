@@ -2,7 +2,6 @@ package com.dicoding.restaurantreview.ui
 
 import android.util.Log
 import androidx.lifecycle.*
-import com.dicoding.restaurantreview.Event
 import com.dicoding.restaurantreview.data.remote.response.CustomerReviewsItem
 import com.dicoding.restaurantreview.data.remote.response.PostReviewResponse
 import com.dicoding.restaurantreview.data.remote.response.Restaurant

@@ -1,4 +1,4 @@
-package com.dicoding.restaurantreview
+package com.dicoding.restaurantreview.util
 
 open class Event<out T>(private val content: T) {
 
