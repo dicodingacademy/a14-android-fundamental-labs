@@ -1,4 +1,4 @@
-package com.dicoding.restaurantreview
+package com.dicoding.restaurantreview.data.remote.response
 
 import com.google.gson.annotations.SerializedName
 

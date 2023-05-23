@@ -1,4 +1,4 @@
-package com.dicoding.restaurantreview
+package com.dicoding.restaurantreview.ui
 
 import android.content.Context
 import android.os.Bundle
@@ -6,10 +6,11 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProvider.NewInstanceFactory
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.dicoding.restaurantreview.data.remote.response.CustomerReviewsItem
+import com.dicoding.restaurantreview.data.remote.response.Restaurant
 import com.dicoding.restaurantreview.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
 
@@ -25,39 +26,33 @@ class MainActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
 
-        val mainViewModel = ViewModelProvider(this, NewInstanceFactory()).get(MainViewModel::class.java)
+        val mainViewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.NewInstanceFactory()
+        ).get(MainViewModel::class.java)
 
-        mainViewModel.restaurant.observe(this, { restaurant ->
+        mainViewModel.restaurant.observe(this) { restaurant ->
             setRestaurantData(restaurant)
-        })
+        }
 
         val layoutManager = LinearLayoutManager(this)
         binding.rvReview.layoutManager = layoutManager
         val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
         binding.rvReview.addItemDecoration(itemDecoration)
 
-        mainViewModel.listReview.observe(this, { consumerReviews ->
+        mainViewModel.listReview.observe(this) { consumerReviews ->
             setReviewData(consumerReviews)
-        })
+        }
 
-        mainViewModel.isLoading.observe(this, {
+        mainViewModel.isLoading.observe(this) {
             showLoading(it)
-        })
+        }
 
-        mainViewModel.snackbarText.observe(this, {
-//            Snackbar.make(
-//                    window.decorView.rootView,
-//                    it,
-//                    Snackbar.LENGTH_SHORT
-//            ).show()
+        mainViewModel.snackbarText.observe(this) {
             it.getContentIfNotHandled()?.let { snackBarText ->
-                Snackbar.make(
-                    window.decorView.rootView,
-                    snackBarText,
-                    Snackbar.LENGTH_SHORT
-                ).show()
+                Snackbar.make(window.decorView.rootView, snackBarText, Snackbar.LENGTH_SHORT).show()
             }
-        })
+        }
 
         binding.btnSend.setOnClickListener { view ->
             mainViewModel.postReview(binding.edReview.text.toString())
@@ -75,10 +70,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setReviewData(consumerReviews: List<CustomerReviewsItem>) {
-        val listReview = consumerReviews.map {
-            "${it.review}\n- ${it.name}"
-        }
-        val adapter = ReviewAdapter(listReview)
+        val adapter = ReviewAdapter()
+        adapter.submitList(consumerReviews)
         binding.rvReview.adapter = adapter
         binding.edReview.setText("")
     }
