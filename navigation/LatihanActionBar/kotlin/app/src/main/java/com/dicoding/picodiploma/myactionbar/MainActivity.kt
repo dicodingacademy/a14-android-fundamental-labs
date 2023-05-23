@@ -19,6 +19,28 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.topAppBar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.menu1 -> {
+                    /*
+                    Ketika menu ditekan maka akan memunculkan fragment,
+                    fragment di tambahkan ke dalam backstack sehingga ketika ditekan back akan kembali ke MainActivity
+                     */
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragment_container, MenuFragment())
+                        .addToBackStack(null)
+                        .commit()
+                    true
+                }
+                R.id.menu2 -> {
+                    val i = Intent(this, MenuActivity::class.java)
+                    startActivity(i)
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -48,28 +70,5 @@ class MainActivity : AppCompatActivity() {
             }
         })
         return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.menu1 -> {
-
-                /*
-                Ketika menu ditekan maka akan memunculkan fragment,
-                fragment di tambahkan ke dalam backstack sehingga ketika ditekan back akan kembali ke MainActivity
-                 */
-                supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragment_container, MenuFragment())
-                        .addToBackStack(null)
-                        .commit()
-                return true
-            }
-            R.id.menu2 -> {
-                val i = Intent(this, MenuActivity::class.java)
-                startActivity(i)
-                return true
-            }
-            else -> return true
-        }
     }
 }
