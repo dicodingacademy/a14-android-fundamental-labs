@@ -16,6 +16,7 @@
             app:showAsAction="ifRoom" />
         <item
             android:id="@+id/menu2"
-            android:title="@string/menu_2" />
+            android:title="@string/menu_2"
+            app:showAsAction="never" />
     </group>
 </menu>

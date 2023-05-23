@@ -32,8 +32,8 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.menu2 -> {
-                    val i = Intent(this, MenuActivity::class.java)
-                    startActivity(i)
+                    val intent = Intent(this, MenuActivity::class.java)
+                    startActivity(intent)
                     true
                 }
                 else -> false

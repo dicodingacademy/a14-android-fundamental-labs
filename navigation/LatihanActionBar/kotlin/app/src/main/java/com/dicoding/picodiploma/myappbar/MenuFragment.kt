@@ -10,19 +10,12 @@ import com.dicoding.picodiploma.myappbar.databinding.FragmentMenuBinding
 
 class MenuFragment : Fragment() {
 
-    private var _binding: FragmentMenuBinding? = null
-        private val binding get() = _binding
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentMenuBinding.inflate(inflater, container, false)
-        return binding?.root
+        return inflater.inflate(R.layout.fragment_menu, container, false)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
-}// Required empty public constructor
+}
