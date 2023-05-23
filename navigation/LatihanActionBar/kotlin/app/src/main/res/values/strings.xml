@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyActionBar</string>
+    <string name="app_name">MyAppBar</string>
 
     <string name="search_hint">Masukkan kata</string>
     <string name="this_activity">Ini adalah menu activity</string>

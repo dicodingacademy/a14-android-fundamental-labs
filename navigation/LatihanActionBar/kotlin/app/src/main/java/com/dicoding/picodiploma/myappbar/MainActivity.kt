@@ -1,15 +1,13 @@
-package com.dicoding.picodiploma.myactionbar
+package com.dicoding.picodiploma.myappbar
 
 import android.app.SearchManager
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
-import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
-import com.dicoding.picodiploma.myactionbar.databinding.ActivityMainBinding
+import com.dicoding.picodiploma.myappbar.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
@@ -47,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         val inflater = menuInflater
         inflater.inflate(R.menu.option_menu, menu)
 
-        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        val searchManager = getSystemService(SEARCH_SERVICE) as SearchManager
         val searchView = menu.findItem(R.id.search).actionView as SearchView
 
         searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))

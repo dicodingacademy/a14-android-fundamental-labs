@@ -1,9 +1,9 @@
-package com.dicoding.picodiploma.myactionbar
+package com.dicoding.picodiploma.myappbar
 
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.dicoding.picodiploma.myactionbar.databinding.ActivityMenuBinding
+import com.dicoding.picodiploma.myappbar.databinding.ActivityMenuBinding
 
 class MenuActivity : AppCompatActivity() {
 
