@@ -54,12 +54,12 @@ class MyPreferenceFragment : PreferenceFragmentCompat(), SharedPreferences.OnSha
      */
     override fun onResume() {
         super.onResume()
-        preferenceScreen.sharedPreferences.registerOnSharedPreferenceChangeListener(this)
+        preferenceScreen.sharedPreferences?.registerOnSharedPreferenceChangeListener(this)
     }
 
     override fun onPause() {
         super.onPause()
-        preferenceScreen.sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
+        preferenceScreen.sharedPreferences?.unregisterOnSharedPreferenceChangeListener(this)
     }
 
     /*
@@ -92,10 +92,10 @@ class MyPreferenceFragment : PreferenceFragmentCompat(), SharedPreferences.OnSha
      */
     private fun setSummaries() {
         val sh = preferenceManager.sharedPreferences
-        namePreference.summary = sh.getString(NAME, DEFAULT_VALUE)
-        emailPreference.summary = sh.getString(EMAIL, DEFAULT_VALUE)
-        agePreference.summary = sh.getString(AGE, DEFAULT_VALUE)
-        phonePreference.summary = sh.getString(PHONE, DEFAULT_VALUE)
-        isLoveMuPreference.isChecked = sh.getBoolean(LOVE, false)
+        namePreference.summary = sh?.getString(NAME, DEFAULT_VALUE)
+        emailPreference.summary = sh?.getString(EMAIL, DEFAULT_VALUE)
+        agePreference.summary = sh?.getString(AGE, DEFAULT_VALUE)
+        phonePreference.summary = sh?.getString(PHONE, DEFAULT_VALUE)
+        isLoveMuPreference.isChecked = sh?.getBoolean(LOVE, false) as Boolean
     }
 }
