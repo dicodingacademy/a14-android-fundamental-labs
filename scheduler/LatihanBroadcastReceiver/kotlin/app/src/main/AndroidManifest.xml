@@ -24,7 +24,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SmsReceiverActivity" />
+        
+        <activity
+            android:name=".SmsReceiverActivity"
+            android:theme="@style/Theme.SmsReceiver.Dialog" />
 
         <receiver
             android:name=".SmsReceiver"
