@@ -32,10 +32,6 @@
             </intent-filter>
         </receiver>
 
-        <service
-            android:name=".DownloadService"
-            android:permission="android.permission.BIND_JOB_SERVICE" />
-
     </application>
 
 </manifest>

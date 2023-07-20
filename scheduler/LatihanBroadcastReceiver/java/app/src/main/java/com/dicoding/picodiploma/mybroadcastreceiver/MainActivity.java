@@ -5,16 +5,14 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -37,12 +35,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         downloadReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                Log.d(DownloadService.TAG, "Download Selesai");
                 Toast.makeText(context, "Download Selesai", Toast.LENGTH_SHORT).show();
             }
         };
         IntentFilter downloadIntentFilter = new IntentFilter(ACTION_DOWNLOAD_STATUS);
-
         registerReceiver(downloadReceiver, downloadIntentFilter);
     }
 
@@ -59,8 +55,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (v.getId() == R.id.btn_permission) {
             requestPermissionLauncher.launch(Manifest.permission.RECEIVE_SMS);
         } else if (v.getId() == R.id.btn_download) {
-            Intent downloadServiceIntent = new Intent(this, DownloadService.class);
-            startService(downloadServiceIntent);
+            //simulate download process in 3 seconds
+            final android.os.Handler handler = new android.os.Handler(Looper.getMainLooper());
+            handler.postDelayed(() -> {
+                Intent notifyFinishIntent = new Intent().setAction(MainActivity.ACTION_DOWNLOAD_STATUS);
+                sendBroadcast(notifyFinishIntent);
+            }, 3000);
         }
     }
 
