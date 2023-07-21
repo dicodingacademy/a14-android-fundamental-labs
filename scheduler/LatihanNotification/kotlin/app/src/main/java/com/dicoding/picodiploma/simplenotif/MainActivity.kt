@@ -51,8 +51,8 @@ class MainActivity : AppCompatActivity() {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) PendingIntent.FLAG_IMMUTABLE else 0
         )
 
-        val mNotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        val mBuilder = NotificationCompat.Builder(this, CHANNEL_ID)
+        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val builder = NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentIntent(pendingIntent)
                 .setSmallIcon(R.drawable.ic_notifications_white_48px)
                 .setLargeIcon(BitmapFactory.decodeResource(resources, R.drawable.ic_notifications_white_48px))
@@ -71,13 +71,13 @@ class MainActivity : AppCompatActivity() {
             val channel = NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT)
             channel.description = CHANNEL_NAME
 
-            mBuilder.setChannelId(CHANNEL_ID)
-            mNotificationManager.createNotificationChannel(channel)
+            builder.setChannelId(CHANNEL_ID)
+            notificationManager.createNotificationChannel(channel)
         }
 
-        val notification = mBuilder.build()
+        val notification = builder.build()
 
-        mNotificationManager.notify(NOTIFICATION_ID, notification)
+        notificationManager.notify(NOTIFICATION_ID, notification)
     }
 
     companion object {
