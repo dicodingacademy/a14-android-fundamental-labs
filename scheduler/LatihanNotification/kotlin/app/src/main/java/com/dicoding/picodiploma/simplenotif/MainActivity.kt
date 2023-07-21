@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         /*
         Untuk Android 13 ke atas perlu menambahkan permission
         */
-        if (Build.VERSION.SDK_INT > 32) {
+        if (Build.VERSION.SDK_INT >= 33) {
             requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
         }
     }
