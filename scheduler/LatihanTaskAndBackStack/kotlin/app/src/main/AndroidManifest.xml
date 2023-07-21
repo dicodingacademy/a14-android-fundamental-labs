@@ -20,11 +20,7 @@
         </activity>
         <activity
             android:name=".DetailActivity"
-            android:label="@string/activity_detail"
             android:parentActivityName=".MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
         </activity>
     </application>
 
