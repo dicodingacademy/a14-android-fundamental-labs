@@ -1,5 +1,6 @@
 package com.dicoding.picodiploma.simplenotif
 
+import android.Manifest
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -10,19 +11,34 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 
 class MainActivity : AppCompatActivity() {
-    companion object {
-        private const val NOTIFICATION_ID = 1
-        private const val CHANNEL_ID = "channel_01"
-        private const val CHANNEL_NAME = "dicoding channel"
-    }
+
+    private val requestPermissionLauncher =
+        registerForActivityResult(
+            ActivityResultContracts.RequestPermission()
+        ) { isGranted: Boolean ->
+            if (isGranted) {
+                Toast.makeText(this, "Notifications permission granted", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Notifications permission rejected", Toast.LENGTH_SHORT).show()
+            }
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        /*
+        Untuk Android 13 ke atas perlu menambahkan permission
+        */
+        if (Build.VERSION.SDK_INT > 32) {
+            requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+        }
     }
 
     //aksi untuk onClick pada button
@@ -46,7 +62,7 @@ class MainActivity : AppCompatActivity() {
                 .setAutoCancel(true)
 
         /*
-        Untuk android Oreo ke atas perlu menambahkan notification channel
+        Untuk Android Oreo ke atas perlu menambahkan notification channel
         */
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -62,5 +78,11 @@ class MainActivity : AppCompatActivity() {
         val notification = mBuilder.build()
 
         mNotificationManager.notify(NOTIFICATION_ID, notification)
+    }
+
+    companion object {
+        private const val NOTIFICATION_ID = 1
+        private const val CHANNEL_ID = "channel_01"
+        private const val CHANNEL_NAME = "dicoding channel"
     }
 }
