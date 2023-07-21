@@ -8,7 +8,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -16,7 +15,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.TaskStackBuilder
 import com.dicoding.picodiploma.mydeepnavigation.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -40,20 +39,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
         }
 
-        binding.btnSendNotification.setOnClickListener(this)
-        binding.btnOpenDetail.setOnClickListener(this)
-    }
-
-
-    override fun onClick(v: View) {
         val title = getString(R.string.notification_title)
         val message = getString(R.string.notification_message)
-        if (v.id == R.id.btn_send_notification) {
+
+        binding.btnSendNotification.setOnClickListener {
             sendNotification(title, message)
-        } else if (v.id == R.id.btn_open_detail) {
-            /*
-            Intent yang akan dikirimkan ke halaman detail
-             */
+        }
+        binding.btnOpenDetail.setOnClickListener{
             val detailIntent = Intent(this@MainActivity, DetailActivity::class.java)
             detailIntent.putExtra(DetailActivity.EXTRA_TITLE, title)
             detailIntent.putExtra(DetailActivity.EXTRA_MESSAGE, message)
