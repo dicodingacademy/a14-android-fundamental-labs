@@ -1,4 +1,4 @@
-package com.dicoding.picodiploma.mydeepnavigation
+package com.dicoding.picodiploma.simplenotif
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

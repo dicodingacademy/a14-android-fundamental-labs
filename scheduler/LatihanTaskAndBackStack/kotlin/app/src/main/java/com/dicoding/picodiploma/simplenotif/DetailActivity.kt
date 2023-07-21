@@ -1,8 +1,8 @@
-package com.dicoding.picodiploma.mydeepnavigation
+package com.dicoding.picodiploma.simplenotif
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.dicoding.picodiploma.mydeepnavigation.databinding.ActivityDetailBinding
+import com.dicoding.picodiploma.simplenotif.databinding.ActivityDetailBinding
 
 class DetailActivity : AppCompatActivity() {
 

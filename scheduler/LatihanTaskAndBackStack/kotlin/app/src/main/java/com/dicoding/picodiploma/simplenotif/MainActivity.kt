@@ -1,4 +1,4 @@
-package com.dicoding.picodiploma.mydeepnavigation
+package com.dicoding.picodiploma.simplenotif
 
 import android.Manifest
 import android.app.NotificationChannel
@@ -13,7 +13,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import androidx.core.app.TaskStackBuilder
-import com.dicoding.picodiploma.mydeepnavigation.databinding.ActivityMainBinding
+import com.dicoding.picodiploma.simplenotif.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 

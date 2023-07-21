@@ -4,10 +4,10 @@ plugins {
 }
 
 android {
-    namespace 'com.dicoding.picodiploma.mydeepnavigation'
+    namespace 'com.dicoding.picodiploma.simplenotif'
     compileSdkVersion 33
     defaultConfig {
-        applicationId "com.dicoding.picodiploma.mydeepnavigation"
+        applicationId "com.dicoding.picodiploma.simplenotif"
         minSdkVersion 21
         targetSdkVersion 33
         versionCode 1
