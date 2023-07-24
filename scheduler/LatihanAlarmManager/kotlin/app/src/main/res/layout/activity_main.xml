@@ -28,7 +28,7 @@
             style="?attr/materialIconButtonFilledStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:icon="@drawable/ic_date_range_black" />
+            app:icon="@drawable/baseline_date_range_24" />
 
         <TextView
             android:id="@+id/tv_once_date"
@@ -48,7 +48,7 @@
             style="?attr/materialIconButtonFilledStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:icon="@drawable/ic_access_time_black" />
+            app:icon="@drawable/baseline_access_time_24" />
 
         <TextView
             android:id="@+id/tv_once_time"
@@ -91,7 +91,7 @@
             style="?attr/materialIconButtonFilledStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:icon="@drawable/ic_access_time_black" />
+            app:icon="@drawable/baseline_access_time_24" />
 
         <TextView
             android:id="@+id/tv_repeating_time"
