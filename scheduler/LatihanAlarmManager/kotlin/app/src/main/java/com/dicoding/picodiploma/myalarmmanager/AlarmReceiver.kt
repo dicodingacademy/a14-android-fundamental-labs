@@ -9,6 +9,8 @@ import android.content.Context
 import android.content.Intent
 import android.media.RingtoneManager
 import android.os.Build
+import android.provider.AlarmClock.EXTRA_MESSAGE
+import android.provider.Settings.System.DATE_FORMAT
 import android.util.Log
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
@@ -18,21 +20,6 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class AlarmReceiver : BroadcastReceiver() {
-
-    companion object {
-        const val TYPE_ONE_TIME = "OneTimeAlarm"
-        const val TYPE_REPEATING = "RepeatingAlarm"
-        const val EXTRA_MESSAGE = "message"
-        const val EXTRA_TYPE = "type"
-
-        // Siapkan 2 id untuk 2 macam alarm, onetime dan repeating
-        private const val ID_ONETIME = 100
-        private const val ID_REPEATING = 101
-
-        private const val DATE_FORMAT = "yyyy-MM-dd"
-        private const val TIME_FORMAT = "HH:mm"
-
-    }
 
     override fun onReceive(context: Context, intent: Intent) {
         val type = intent.getStringExtra(EXTRA_TYPE)
@@ -225,5 +212,20 @@ class AlarmReceiver : BroadcastReceiver() {
         } catch (e: ParseException) {
             true
         }
+    }
+
+    companion object {
+        const val TYPE_ONE_TIME = "OneTimeAlarm"
+        const val TYPE_REPEATING = "RepeatingAlarm"
+        const val EXTRA_MESSAGE = "message"
+        const val EXTRA_TYPE = "type"
+
+        // Siapkan 2 id untuk 2 macam alarm, onetime dan repeating
+        private const val ID_ONETIME = 100
+        private const val ID_REPEATING = 101
+
+        private const val DATE_FORMAT = "yyyy-MM-dd"
+        private const val TIME_FORMAT = "HH:mm"
+
     }
 }
