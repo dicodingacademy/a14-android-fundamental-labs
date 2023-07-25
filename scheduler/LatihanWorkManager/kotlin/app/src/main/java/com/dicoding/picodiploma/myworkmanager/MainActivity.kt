@@ -68,10 +68,10 @@ class MainActivity : AppCompatActivity(), OnClickListener {
                 .build()
         workManager.enqueue(oneTimeWorkRequest)
         workManager.getWorkInfoByIdLiveData(oneTimeWorkRequest.id)
-                .observe(this@MainActivity, { workInfo ->
+                .observe(this@MainActivity) { workInfo ->
                     val status = workInfo.state.name
                     binding.textStatus.append("\n" + status)
-                })
+                }
     }
 
     private fun startPeriodicTask() {
@@ -88,14 +88,14 @@ class MainActivity : AppCompatActivity(), OnClickListener {
                 .build()
         workManager.enqueue(periodicWorkRequest)
         workManager.getWorkInfoByIdLiveData(periodicWorkRequest.id)
-                .observe(this@MainActivity, { workInfo ->
+                .observe(this@MainActivity) { workInfo ->
                     val status = workInfo.state.name
                     binding.textStatus.append("\n" + status)
                     binding.btnCancelTask.isEnabled = false
                     if (workInfo.state == WorkInfo.State.ENQUEUED) {
                         binding.btnCancelTask.isEnabled = true
                     }
-                })
+                }
     }
 
     private fun cancelPeriodicTask() {
