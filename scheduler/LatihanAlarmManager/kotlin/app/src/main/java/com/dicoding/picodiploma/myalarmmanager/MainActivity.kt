@@ -19,12 +19,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,
     private var binding: ActivityMainBinding? = null
     private lateinit var alarmReceiver: AlarmReceiver
 
-    companion object {
-        private const val DATE_PICKER_TAG = "DatePicker"
-        private const val TIME_PICKER_ONCE_TAG = "TimePickerOnce"
-        private const val TIME_PICKER_REPEAT_TAG = "TimePickerRepeat"
-    }
-
     private val requestPermissionLauncher =
         registerForActivityResult(
             ActivityResultContracts.RequestPermission()
@@ -136,5 +130,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,
         super.onDestroy()
 
         binding = null
+    }
+
+
+    companion object {
+        private const val DATE_PICKER_TAG = "DatePicker"
+        private const val TIME_PICKER_ONCE_TAG = "TimePickerOnce"
+        private const val TIME_PICKER_REPEAT_TAG = "TimePickerRepeat"
     }
 }
