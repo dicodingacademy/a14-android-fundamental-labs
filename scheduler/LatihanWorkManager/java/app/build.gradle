@@ -2,11 +2,11 @@ plugins {
     id 'com.android.application'
 }
 android {
-    compileSdkVersion 30
+    compileSdkVersion 33
     defaultConfig {
         applicationId "com.dicoding.picodiploma.myworkmanager"
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -21,6 +21,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    namespace 'com.dicoding.picodiploma.myworkmanager'
 }
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.3.1'
