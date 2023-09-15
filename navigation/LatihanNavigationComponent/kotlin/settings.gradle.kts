@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-include ':app'
-rootProject.name='MyNavigation'
+include(":app")
+rootProject.name="MyNavigation"
