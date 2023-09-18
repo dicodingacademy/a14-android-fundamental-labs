@@ -21,7 +21,7 @@
         android:text="@string/category_description" />
 
     <Button
-        android:id="@+id/btn_profile"
+        android:id="@+id/btn_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/to_home" />
