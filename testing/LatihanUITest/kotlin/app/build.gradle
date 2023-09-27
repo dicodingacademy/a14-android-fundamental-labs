@@ -4,6 +4,7 @@ plugins {
 }
 
 android {
+    namespace 'com.dicoding.picodiploma.myunittest'
     compileSdkVersion 33
     defaultConfig {
         applicationId "com.dicoding.picodiploma.mynavigationdrawer"
