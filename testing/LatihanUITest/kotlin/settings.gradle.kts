@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-include (':app')
+include(":app")
 rootProject.name="MyUnitTest"
