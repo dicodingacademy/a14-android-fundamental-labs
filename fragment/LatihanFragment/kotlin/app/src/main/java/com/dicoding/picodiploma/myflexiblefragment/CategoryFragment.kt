@@ -23,8 +23,8 @@ class CategoryFragment : Fragment(), View.OnClickListener {
         btnDetailCategory.setOnClickListener(this)
     }
 
-    override fun onClick(v: View) {
-        if (v.id == R.id.btn_detail_category) {
+    override fun onClick(v: View?) {
+        if (v?.id == R.id.btn_detail_category) {
             val detailCategoryFragment = DetailCategoryFragment()
 
             val bundle = Bundle()

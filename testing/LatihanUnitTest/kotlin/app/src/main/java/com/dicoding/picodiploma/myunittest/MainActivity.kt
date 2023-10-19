@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         activityMainBinding.btnCalculateVolume.setOnClickListener(this)
     }
 
-    override fun onClick(v: View) {
+    override fun onClick(v: View?) {
         val length = activityMainBinding.edtLength.text.toString().trim()
         val width = activityMainBinding.edtWidth.text.toString().trim()
         val height = activityMainBinding.edtHeight.text.toString().trim()
@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 val valueWidth = width.toDouble()
                 val valueHeight = height.toDouble()
 
-                when (v.id) {
+                when (v?.id) {
                     R.id.btn_save -> {
                         mainViewModel.save(valueLength, valueWidth, valueHeight)
                         visible()

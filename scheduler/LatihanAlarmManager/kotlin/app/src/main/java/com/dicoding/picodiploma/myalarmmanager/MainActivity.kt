@@ -52,8 +52,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,
         alarmReceiver = AlarmReceiver()
     }
 
-    override fun onClick(v: View) {
-        when (v.id) {
+    override fun onClick(v: View?) {
+        when (v?.id) {
             R.id.btn_once_date -> {
                 val datePickerFragment = DatePickerFragment()
                 datePickerFragment.show(supportFragmentManager, DATE_PICKER_TAG)

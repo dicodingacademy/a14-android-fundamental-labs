@@ -23,8 +23,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
         btnCategory.setOnClickListener(this)
     }
 
-    override fun onClick(v: View) {
-        if (v.id == R.id.btn_category) {
+    override fun onClick(v: View?) {
+        if (v?.id == R.id.btn_category) {
             /*
             Method addToBackStack akan menambahkan fragment ke backstack
 
@@ -41,4 +41,5 @@ class HomeFragment : Fragment(), View.OnClickListener {
             }
         }
     }
+
 }
