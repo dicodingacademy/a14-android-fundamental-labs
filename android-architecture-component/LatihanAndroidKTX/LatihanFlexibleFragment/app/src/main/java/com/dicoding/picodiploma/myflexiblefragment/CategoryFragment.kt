@@ -10,7 +10,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 
-class CategoryFragment : Fragment() {
+class CategoryFragment : Fragment(), View.OnClickListener {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -22,16 +22,20 @@ class CategoryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val btnDetailCategory: Button = view.findViewById(R.id.btn_detail_category)
-        btnDetailCategory.setOnClickListener {
-            val mDetailCategoryFragment = DetailCategoryFragment()
+        btnDetailCategory.setOnClickListener(this)
+    }
+
+    override fun onClick(v: View?) {
+        if (v?.id == R.id.btn_detail_category) {
+            val detailCategoryFragment = DetailCategoryFragment()
 
             val mBundle = bundleOf(
-                    DetailCategoryFragment.EXTRA_NAME to "Lifestyle"
+                DetailCategoryFragment.EXTRA_NAME to "Lifestyle"
             )
             val description = "Kategori ini akan berisi produk-produk lifestyle"
 
-            mDetailCategoryFragment.arguments = mBundle
-            mDetailCategoryFragment.description = description
+            detailCategoryFragment.arguments = mBundle
+            detailCategoryFragment.description = description
 
             /*
             Method addToBackStack akan menambahkan fragment ke backstack
@@ -39,10 +43,10 @@ class CategoryFragment : Fragment() {
             jika ada fragment di dalam backstack maka fragment yang akan di close / remove
             jika sudah tidak ada fragment di dalam backstack maka activity yang akan di close / finish
              */
-            val mFragmentManager = parentFragmentManager
-            mFragmentManager.commit {
+            val fragmentManager = parentFragmentManager
+            fragmentManager.commit {
                 addToBackStack(null)
-                replace(R.id.frame_container, mDetailCategoryFragment, DetailCategoryFragment::class.java.simpleName)
+                replace(R.id.frame_container, detailCategoryFragment, DetailCategoryFragment::class.java.simpleName)
             }
         }
     }

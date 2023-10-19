@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), View.OnClickListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -21,7 +21,11 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val btnCategory: Button = view.findViewById(R.id.btn_category)
-        btnCategory.setOnClickListener {
+        btnCategory.setOnClickListener(this)
+    }
+
+    override fun onClick(v: View?) {
+        if (v?.id == R.id.btn_category) {
             /*
             Method addToBackStack akan menambahkan fragment ke backstack
 
@@ -29,11 +33,11 @@ class HomeFragment : Fragment() {
             jika ada fragment di dalam backstack maka fragment yang akan di close / remove
             jika sudah tidak ada fragment di dalam backstack maka activity yang akan di close / finish
              */
-            val mCategoryFragment = CategoryFragment()
-            val mFragmentManager = parentFragmentManager
-            mFragmentManager.commit {
+            val categoryFragment = CategoryFragment()
+            val fragmentManager = parentFragmentManager
+            fragmentManager.commit {
                 addToBackStack(null)
-                replace(R.id.frame_container, mCategoryFragment, CategoryFragment::class.java.simpleName)
+                replace(R.id.frame_container, categoryFragment, CategoryFragment::class.java.simpleName)
             }
         }
     }

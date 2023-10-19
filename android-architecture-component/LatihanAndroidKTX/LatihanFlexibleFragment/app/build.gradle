@@ -4,6 +4,7 @@ plugins {
 }
 
 android {
+    namespace 'com.dicoding.picodiploma.myflexiblefragment'
     compileSdkVersion 30
 
     defaultConfig {
