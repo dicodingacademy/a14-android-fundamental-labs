@@ -65,7 +65,7 @@ class MyPreferenceFragment : PreferenceFragmentCompat(), SharedPreferences.OnSha
     /*
     listener untuk set summary ketika ada sharedpreference yang berubah
      */
-    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
+    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String?) {
         if (key == NAME) {
             namePreference.summary = sharedPreferences.getString(NAME, DEFAULT_VALUE)
         }
