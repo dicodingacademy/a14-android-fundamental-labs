@@ -12,5 +12,6 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-include ':app'
-rootProject.name='MyNavigationDrawer'
+
+rootProject.name = "MyNavigationDrawer"
+include(":app")
