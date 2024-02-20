@@ -5,11 +5,11 @@ plugins {
 
 android {
     namespace = "com.dicoding.picodiploma.mynavigationdrawer"
-    compileSdk = 33
+    compileSdk = 34
     defaultConfig {
         applicationId = "com.dicoding.picodiploma.mynavigationdrawer"
         minSdk = 15
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
