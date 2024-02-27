@@ -33,8 +33,6 @@ class ListQuotesActivity : AppCompatActivity() {
         binding = ActivityListQuotesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportActionBar?.title = "List of Quotes"
-
         val layoutManager = LinearLayoutManager(this)
         binding.listQuotes.setLayoutManager(layoutManager)
         val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
