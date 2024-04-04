@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -93,6 +94,12 @@ class NoteAddUpdateActivity : AppCompatActivity() {
                 }
             }
         }
+
+        onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                showAlertDialog(ALERT_DIALOG_CLOSE)
+            }
+        })
     }
 
     private fun showToast(message: String) {
@@ -112,10 +119,6 @@ class NoteAddUpdateActivity : AppCompatActivity() {
             android.R.id.home -> showAlertDialog(ALERT_DIALOG_CLOSE)
         }
         return super.onOptionsItemSelected(item)
-    }
-
-    override fun onBackPressed() {
-        showAlertDialog(ALERT_DIALOG_CLOSE)
     }
 
     private fun showAlertDialog(type: Int) {
