@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.dicoding.picodiploma.mynotesapp.databinding.ActivityNoteAddUpdateBinding
@@ -73,6 +74,12 @@ class NoteAddUpdateActivity : AppCompatActivity(), View.OnClickListener {
         binding.btnSubmit.text = btnTitle
 
         binding.btnSubmit.setOnClickListener(this)
+
+        onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                showAlertDialog(ALERT_DIALOG_CLOSE)
+            }
+        })
     }
 
     override fun onClick(view: View) {
@@ -155,10 +162,6 @@ class NoteAddUpdateActivity : AppCompatActivity(), View.OnClickListener {
             android.R.id.home -> showAlertDialog(ALERT_DIALOG_CLOSE)
         }
         return super.onOptionsItemSelected(item)
-    }
-
-    override fun onBackPressed() {
-        showAlertDialog(ALERT_DIALOG_CLOSE)
     }
 
 
