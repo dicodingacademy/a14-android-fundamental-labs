@@ -164,7 +164,10 @@ class NoteAddUpdateActivity : AppCompatActivity(), View.OnClickListener {
         return super.onOptionsItemSelected(item)
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0898adb5e96e2e633e0ce5f6087078bef87f73c5
     /*
     Konfirmasi dialog sebelum proses batal atau hapus
     close = 10
