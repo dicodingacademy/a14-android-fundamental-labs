@@ -43,10 +43,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
      * Method untuk menampilkan semua file yang ada
      */
     private fun showList() {
-        val items = fileList()
+        val items = fileList().filter { fileName -> (fileName != "profileInstalled") }.toTypedArray()
+
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Pilih file yang diinginkan")
-        builder.setItems(items) { _, item -> loadData(items[item].toString()) }
+        builder.setItems(items) { dialog, item -> loadData(items[item].toString()) }
         val alert = builder.create()
         alert.show()
     }

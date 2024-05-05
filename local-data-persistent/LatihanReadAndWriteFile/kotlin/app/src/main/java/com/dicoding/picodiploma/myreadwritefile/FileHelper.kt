@@ -32,7 +32,7 @@ internal object FileHelper {
         fileModel.filename = filename
         fileModel.data = context.openFileInput(filename).bufferedReader().useLines { lines ->
             lines.fold("") { some, text ->
-                 "$some\n$text"
+                 "$some$text\n"
             }
         }
         return fileModel

@@ -1,8 +1,8 @@
 pluginManagement {
     repositories {
+        gradlePluginPortal()
         google()
         mavenCentral()
-        gradlePluginPortal()
     }
 }
 dependencyResolutionManagement {
@@ -12,5 +12,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "My DataStore"
-include ':app'
+
+include(":app")
+rootProject.name="My DataStore"
+
